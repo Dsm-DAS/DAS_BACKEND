@@ -10,6 +10,7 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -42,15 +43,15 @@ public class User {
     private String name;
 
     @NotNull
-    @Size(max = 1)
+    @Max(1)
     private Integer grade;
 
     @NotNull
-    @Size(max = 1)
+    @Max(1)
     private Integer classNum;
 
     @NotNull
-    @Size(max = 2)
+    @Max(2)
     private Integer number;
 
     @NotNull
