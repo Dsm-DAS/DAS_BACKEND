@@ -41,11 +41,12 @@ public class Feed {
     private User user;
 
     @Builder
-    public Feed(String title, String content, String dasUrl, Integer views, User user) {
+    public Feed(String title, String content, String dasUrl, Integer views, Integer likeCounts, User user) {
         this.title = title;
         this.content = content;
         this.dasUrl = dasUrl;
         this.views = views;
+        this.likeCounts = likeCounts;
         this.user = user;
     }
 
