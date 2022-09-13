@@ -60,7 +60,8 @@ public class User {
     private String introduce;
 
     @Builder
-    public User(String accountId, String email, String password, String name, Integer grade, Integer classNum, Integer number, String profileImageUrl, String introduce) {
+    public User(String accountId, String email, String password, String name,
+                Integer grade, Integer classNum, Integer number, String profileImageUrl, String introduce) {
         this.accountId = accountId;
         this.email = email;
         this.password = password;
