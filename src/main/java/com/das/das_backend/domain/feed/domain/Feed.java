@@ -34,15 +34,16 @@ public class Feed {
     private Integer views;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @Builder
-    public Feed(String title, String content, String dasUrl, Integer views) {
+    public Feed(String title, String content, String dasUrl, Integer views, User user) {
         this.title = title;
         this.content = content;
         this.dasUrl = dasUrl;
         this.views = views;
+        this.user = user;
     }
 
 }
