@@ -27,6 +27,7 @@ public class Feed {
     @Size(max = 1000)
     private String content;
 
+    @NotNull
     @Size(max = 500)
     private String dasUrl;
 
