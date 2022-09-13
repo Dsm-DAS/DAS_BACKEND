@@ -33,6 +33,9 @@ public class Feed {
     @Column(nullable = false)
     private Integer views;
 
+    @Column(nullable = false)
+    private Integer likeCounts;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
