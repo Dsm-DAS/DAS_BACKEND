@@ -1,5 +1,6 @@
 package com.das.das_backend.domain.user.domain;
 
+import com.das.das_backend.global.enums.Authority;
 import com.das.das_backend.infrastructure.s3.DefaultImage;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -52,6 +53,10 @@ public class User {
     @Size(max = 2)
     private Integer number;
 
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private Authority authority;
+
     @ColumnDefault(DefaultImage.USER_PROFILE_IMAGE)
     @Column(nullable = false)
     private String profileImageUrl;
@@ -61,7 +66,7 @@ public class User {
 
     @Builder
     public User(String accountId, String email, String password, String name,
-                Integer grade, Integer classNum, Integer number, String profileImageUrl, String introduce) {
+                Integer grade, Integer classNum, Integer number, Authority authority, String profileImageUrl, String introduce) {
         this.accountId = accountId;
         this.email = email;
         this.password = password;
@@ -69,6 +74,7 @@ public class User {
         this.grade = grade;
         this.classNum = classNum;
         this.number = number;
+        this.authority = authority;
         this.profileImageUrl = profileImageUrl;
         this.introduce = introduce;
     }
