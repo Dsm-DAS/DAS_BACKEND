@@ -15,11 +15,7 @@ import javax.persistence.*;
 @Table(name = "tbl_feed_like")
 @Entity
 public class Like {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
