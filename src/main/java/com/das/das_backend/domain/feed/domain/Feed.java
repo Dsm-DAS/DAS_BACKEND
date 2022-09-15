@@ -1,7 +1,7 @@
 package com.das.das_backend.domain.feed.domain;
 
 import com.das.das_backend.domain.user.domain.User;
-import com.das.das_backend.global.entity.BaseTimeEntity;
+import com.das.das_backend.global.entity.BaseTimeIdEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,11 +14,7 @@ import javax.validation.constraints.Size;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Feed extends BaseTimeEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Feed extends BaseTimeIdEntity {
 
     @NotNull
     @Size(max = 20)

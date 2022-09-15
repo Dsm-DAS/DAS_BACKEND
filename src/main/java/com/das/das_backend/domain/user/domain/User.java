@@ -1,5 +1,6 @@
 package com.das.das_backend.domain.user.domain;
 
+import com.das.das_backend.global.entity.BaseIdEntity;
 import com.das.das_backend.global.enums.Authority;
 import com.das.das_backend.infrastructure.s3.DefaultImage;
 import lombok.AccessLevel;
@@ -18,11 +19,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
 @Entity
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class User extends BaseIdEntity {
 
     @NotNull
     @Size(max = 20)
