@@ -21,15 +21,16 @@ public class Like {
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "feed_id")
+    @JoinColumn(name = "feed_id", nullable = false)
     private Feed feed;
 
     @Builder
-    public Like(User user, Feed feed){
+    public Like(User user, Feed feed) {
         this.user = user;
         this.feed = feed;
     }
