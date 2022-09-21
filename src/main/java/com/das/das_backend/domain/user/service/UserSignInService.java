@@ -1,0 +1,41 @@
+package com.das.das_backend.domain.user.service;
+
+import com.das.das_backend.domain.user.domain.User;
+import com.das.das_backend.domain.user.domain.repository.UserRepository;
+import com.das.das_backend.domain.user.exception.PasswordMisMatchException;
+import com.das.das_backend.domain.user.exception.UserNotFoundException;
+import com.das.das_backend.domain.user.presentation.dto.request.UserSignInRequest;
+import com.das.das_backend.domain.user.presentation.dto.response.TokenResponse;
+import com.das.das_backend.global.security.jwt.JwtTokenProvider;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@RequiredArgsConstructor
+@Service
+public class UserSignInService {
+
+    private final UserRepository userRepository;
+    private final JwtTokenProvider jwtTokenProvider;
+    private final PasswordEncoder passwordEncoder;
+
+    @Transactional
+    public TokenResponse execute(UserSignInRequest request) {
+        User user = userRepository.findByAccountId(request.getAccountId())
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
+
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+            throw PasswordMisMatchException.EXCEPTION;
+        }
+
+        String accessToken = jwtTokenProvider.generateAccessToken(request.getAccountId());
+        String refreshToken = jwtTokenProvider.generateRefreshToken(request.getAccountId());
+
+        return TokenResponse.builder()
+                .accessToken(accessToken)
+                .refreshToken(refreshToken)
+                .build();
+    }
+
+}
