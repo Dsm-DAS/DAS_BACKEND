@@ -6,6 +6,7 @@ import com.das.das_backend.domain.user.presentation.dto.response.TokenResponse;
 import com.das.das_backend.domain.user.service.LogoutService;
 import com.das.das_backend.domain.user.service.UserSignInService;
 import com.das.das_backend.domain.user.service.UserSignUpService;
+import com.das.das_backend.domain.user.service.UserWithdrawalService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,7 @@ public class UserController {
     private final UserSignInService userSignInService;
     private final UserSignUpService userSignUpService;
     private final LogoutService logoutService;
+    private final UserWithdrawalService userWithdrawalService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -36,6 +38,12 @@ public class UserController {
     @DeleteMapping("/logout")
     public void logout() {
         logoutService.execute();
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping
+    public void deleteUser() {
+        userWithdrawalService.execute();
     }
 
 }
