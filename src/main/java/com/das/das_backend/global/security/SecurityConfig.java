@@ -31,10 +31,13 @@ public class SecurityConfig {
                 .authorizeRequests()
 
 
+                // user
                 .antMatchers(HttpMethod.POST, "/user/signup").permitAll()
                 .antMatchers("/user/token").permitAll()
+                .antMatchers(HttpMethod.DELETE, "/user/logout").authenticated()
+                .antMatchers(HttpMethod.DELETE, "/user").authenticated()
 
-                .anyRequest().authenticated()
+                .anyRequest().denyAll()
                 .and().build();
     }
 
