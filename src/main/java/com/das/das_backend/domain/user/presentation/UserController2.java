@@ -10,16 +10,9 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 @RequestMapping("/user")
 @RestController
-public class UserController {
+public class UserController2 {
 
     private final UserSignUpService userSignUpService;
-
-
-
-
-
-
-
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
