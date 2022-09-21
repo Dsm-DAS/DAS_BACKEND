@@ -22,11 +22,6 @@ import javax.validation.constraints.Size;
 public class User extends BaseIdEntity {
 
     @NotNull
-    @Size(max = 20)
-    @Column(unique = true)
-    private String accountId;
-
-    @NotNull
     @Size(max = 64)
     @Column(unique = true)
     private String email;
@@ -63,9 +58,8 @@ public class User extends BaseIdEntity {
     private String introduce;
 
     @Builder
-    public User(String accountId, String email, String password, String name,
+    public User(String email, String password, String name,
                 Integer grade, Integer classNum, Integer number, Authority authority, String profileImageUrl, String introduce) {
-        this.accountId = accountId;
         this.email = email;
         this.password = password;
         this.name = name;

@@ -3,6 +3,7 @@ package com.das.das_backend.domain.user.presentation.dto.request;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Getter
@@ -10,7 +11,8 @@ import javax.validation.constraints.NotBlank;
 public class UserSignInRequest {
 
     @NotBlank
-    private String accountId;
+    @Email
+    private String email;
 
     @NotBlank
     private String password;

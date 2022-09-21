@@ -19,12 +19,12 @@ public class UserSignUpService {
 
     public void execute(UserSignUpRequest request) {
 
-        if (userRepository.findByAccountId(request.getAccountId()).isPresent()) {
+        if (userRepository.findByEmail(request.getEmail()).isPresent()) {
             throw UserAlreadyExistsException.EXCEPTION;
         }
 
         userRepository.save(User.builder()
-                .accountId(request.getAccountId())
+                .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .name(request.getName())
                 .authority(Authority.USER)
