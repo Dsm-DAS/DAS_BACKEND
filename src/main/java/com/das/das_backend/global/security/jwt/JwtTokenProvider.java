@@ -1,7 +1,7 @@
 package com.das.das_backend.global.security.jwt;
 
-import com.das.das_backend.domain.auth.domain.RefreshToken;
-import com.das.das_backend.domain.auth.domain.repository.RefreshTokenRepository;
+import com.das.das_backend.domain.refresh_token.domain.RefreshToken;
+import com.das.das_backend.domain.refresh_token.domain.repository.RefreshTokenRepository;
 import com.das.das_backend.global.exception.ExpiredTokenException;
 import com.das.das_backend.global.exception.InvalidTokenException;
 import com.das.das_backend.global.security.auth.AuthDetailsService;
