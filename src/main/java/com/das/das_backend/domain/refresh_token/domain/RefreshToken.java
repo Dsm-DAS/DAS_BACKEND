@@ -1,4 +1,4 @@
-package com.das.das_backend.domain.auth.domain;
+package com.das.das_backend.domain.refresh_token.domain;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
