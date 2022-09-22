@@ -37,6 +37,10 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.DELETE, "/user/logout").authenticated()
                 .antMatchers(HttpMethod.DELETE, "/user").authenticated()
 
+                // notice
+                .antMatchers(HttpMethod.POST, "/notice").hasAuthority("TEACHER, MANAGER")
+                .antMatchers(HttpMethod.DELETE, "/notice/{notice-id}").hasAuthority("TEACHER, MANAGER")
+                .antMatchers(HttpMethod.PATCH, "notice/{notice-id}").hasAuthority("TEACHER, MANAGER")
                 .anyRequest().denyAll()
                 .and().build();
     }
