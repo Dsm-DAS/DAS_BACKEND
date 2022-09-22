@@ -17,6 +17,7 @@ import javax.validation.Valid;
 public class UserController {
 
     private final UserSignInService userSignInService;
+    private final TokenRefreshService tokenRefreshService;
     private final UserSignUpService userSignUpService;
     private final ChangePasswordService changePasswordService;
     private final LogoutService logoutService;
@@ -32,6 +33,11 @@ public class UserController {
     @PostMapping("/token")
     public TokenResponse signIn(@RequestBody @Valid UserSignInRequest request) {
         return userSignInService.execute(request);
+    }
+
+    @PatchMapping("/token")
+    public TokenResponse reIssue(@RequestHeader("Refresh-Token") String refreshToken) {
+        return tokenRefreshService.execute(refreshToken);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
