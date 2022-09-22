@@ -1,7 +1,6 @@
 package com.das.das_backend.domain.feed.service;
 
 import com.das.das_backend.domain.feed.domain.Feed;
-import com.das.das_backend.domain.feed.domain.repository.FeedRepository;
 import com.das.das_backend.domain.feed.exception.FeedCannotUpdateException;
 import com.das.das_backend.domain.feed.facade.FeedFacade;
 import com.das.das_backend.domain.feed.presentation.dto.request.UpdateFeedRequest;
@@ -27,7 +26,8 @@ public class UpdateFeedService {
             throw FeedCannotUpdateException.EXCEPTION;
         }
 
-        feed.modifyFeed(request.getTitle(), request.getContent(), request.getDasUrl());
+        feed.modifyFeed(request.getTitle(),
+                request.getContent(), request.getDasUrl());
     }
 
 }
