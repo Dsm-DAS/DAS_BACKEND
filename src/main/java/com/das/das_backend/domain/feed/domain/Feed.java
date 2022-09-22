@@ -48,4 +48,10 @@ public class Feed extends BaseTimeIdEntity {
         this.user = user;
     }
 
+    public void modifyFeed(String title, String content, String dasUrl) {
+        this.title = title;
+        this.content = content;
+        this.dasUrl = dasUrl;
+    }
+
 }
