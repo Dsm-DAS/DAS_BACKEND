@@ -1,12 +1,10 @@
 package com.das.das_backend.domain.user.presentation;
 
+import com.das.das_backend.domain.user.presentation.dto.request.ChangePasswordRequest;
 import com.das.das_backend.domain.user.presentation.dto.request.UserSignInRequest;
 import com.das.das_backend.domain.user.presentation.dto.request.UserSignUpRequest;
 import com.das.das_backend.domain.user.presentation.dto.response.TokenResponse;
-import com.das.das_backend.domain.user.service.LogoutService;
-import com.das.das_backend.domain.user.service.UserSignInService;
-import com.das.das_backend.domain.user.service.UserSignUpService;
-import com.das.das_backend.domain.user.service.UserWithdrawalService;
+import com.das.das_backend.domain.user.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +18,15 @@ public class UserController {
 
     private final UserSignInService userSignInService;
     private final UserSignUpService userSignUpService;
+    private final ChangePasswordService changePasswordService;
     private final LogoutService logoutService;
     private final UserWithdrawalService userWithdrawalService;
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PatchMapping("/password")
+    public void changePassword(@RequestBody @Valid ChangePasswordRequest request) {
+        changePasswordService.execute(request);
+    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
