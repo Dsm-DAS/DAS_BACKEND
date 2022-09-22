@@ -1,4 +1,4 @@
-package com.das.das_backend.domain.notice;
+package com.das.das_backend.domain.notice.domain;
 
 import com.das.das_backend.domain.user.domain.User;
 import com.das.das_backend.global.entity.BaseTimeIdEntity;
