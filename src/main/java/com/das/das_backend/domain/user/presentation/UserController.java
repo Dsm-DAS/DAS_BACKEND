@@ -22,11 +22,6 @@ public class UserController {
     private final LogoutService logoutService;
     private final UserWithdrawalService userWithdrawalService;
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PatchMapping("/password")
-    public void changePassword(@RequestBody @Valid ChangePasswordRequest request) {
-        changePasswordService.execute(request);
-    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -51,4 +46,10 @@ public class UserController {
         userWithdrawalService.execute();
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PatchMapping("/password")
+    public void changePassword(@RequestBody @Valid ChangePasswordRequest request) {
+        changePasswordService.execute(request);
+    }
+    
 }
