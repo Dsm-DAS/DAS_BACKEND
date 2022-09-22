@@ -33,7 +33,7 @@ public class UserController {
     }
 
     @PatchMapping("/token")
-    public TokenResponse reissue(@RequestHeader("Refresh-Token") String refreshToken) {
+    public TokenResponse reIssue(@RequestHeader("Refresh-Token") String refreshToken) {
         return tokenRefreshService.execute(refreshToken);
     }
 
