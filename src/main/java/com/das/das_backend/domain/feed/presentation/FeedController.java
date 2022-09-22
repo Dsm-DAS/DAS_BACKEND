@@ -1,7 +1,9 @@
 package com.das.das_backend.domain.feed.presentation;
 
 import com.das.das_backend.domain.feed.presentation.dto.request.CreateFeedRequest;
+import com.das.das_backend.domain.feed.presentation.dto.request.UpdateFeedRequest;
 import com.das.das_backend.domain.feed.service.CreateFeedService;
+import com.das.das_backend.domain.feed.service.UpdateFeedService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,11 +16,19 @@ import javax.validation.Valid;
 public class FeedController {
 
     private final CreateFeedService createFeedService;
+    private final UpdateFeedService updateFeedService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public void createFeed(@RequestBody @Valid CreateFeedRequest request) {
         createFeedService.execute(request);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PatchMapping("/{feed-id}")
+    public void modifyFeed(@PathVariable ("feed-id") Integer feedId,
+                           @RequestBody @Valid UpdateFeedRequest request) {
+        updateFeedService.execute(feedId, request);
     }
 
 }
