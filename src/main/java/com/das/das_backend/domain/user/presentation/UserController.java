@@ -16,8 +16,8 @@ import javax.validation.Valid;
 public class UserController {
 
     private final UserSignInService userSignInService;
-    private final UserSignUpService userSignUpService;
     private final TokenRefreshService tokenRefreshService;
+    private final UserSignUpService userSignUpService;
     private final LogoutService logoutService;
     private final UserWithdrawalService userWithdrawalService;
 
