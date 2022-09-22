@@ -12,6 +12,7 @@ public enum ErrorCode {
     EXPIRED_TOKEN(401, "Expired_Token"),
     PASSWORD_MIS_MATCH(401, "Password Mis Match"),
     FEED_CANNOT_UPDATE(401, "Feed Cannot Update"),
+    FEED_CANNOT_DELETE(401, "Feed Cannot Delete"),
 
     USER_NOT_FOUND(404, "User Not Found"),
     FEED_NOT_FOUND(404, "Feed Not Found"),
