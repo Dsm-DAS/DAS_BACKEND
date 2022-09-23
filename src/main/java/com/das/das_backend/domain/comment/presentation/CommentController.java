@@ -3,7 +3,6 @@ package com.das.das_backend.domain.comment.presentation;
 import com.das.das_backend.domain.comment.presentation.dto.request.CreateCommentRequest;
 import com.das.das_backend.domain.comment.service.CreateCommentService;
 import com.das.das_backend.domain.comment.service.DeleteCommentService;
-import com.das.das_backend.domain.comment.service.QueryCommentService;
 import com.das.das_backend.domain.comment.service.UpdateCommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +17,6 @@ public class CommentController {
     private final CreateCommentService createCommentService;
     private final DeleteCommentService deleteCommentService;
     private final UpdateCommentService updateCommentService;
-    private final QueryCommentService queryCommentService;
 
     @PostMapping("/{feed-id}")
     public void createComment(@PathVariable("feed-id") Integer feedId,
