@@ -1,8 +1,6 @@
 package com.das.das_backend.domain.user.presentation;
 
-import com.das.das_backend.domain.user.presentation.dto.request.ChangePasswordRequest;
-import com.das.das_backend.domain.user.presentation.dto.request.UserSignInRequest;
-import com.das.das_backend.domain.user.presentation.dto.request.UserSignUpRequest;
+import com.das.das_backend.domain.user.presentation.dto.request.*;
 import com.das.das_backend.domain.user.presentation.dto.response.TokenResponse;
 import com.das.das_backend.domain.user.service.*;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +20,14 @@ public class UserController {
     private final ChangePasswordService changePasswordService;
     private final LogoutService logoutService;
     private final UserWithdrawalService userWithdrawalService;
+    private final AuthCodeService authCodeService;
+    private final VerifyAuthCodeService verifyAuthCodeService;
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/email")
+    public void sendAuthCode(@RequestBody @Valid EmailRequest request) {
+        authCodeService.execute(request);
+    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
