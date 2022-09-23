@@ -13,10 +13,13 @@ public enum ErrorCode {
     PASSWORD_MIS_MATCH(401, "Password Mis Match"),
     FEED_CANNOT_UPDATE(401, "Feed Cannot Update"),
     FEED_CANNOT_DELETE(401, "Feed Cannot Delete"),
+    COMMENT_CANNOT_DELETE(401,"Comment Cannot Delete"),
+    COMMENT_CANNOT_UPDATE(401,"Comment Cannot Update"),
 
     USER_NOT_FOUND(404, "User Not Found"),
     FEED_NOT_FOUND(404, "Feed Not Found"),
     REFRESH_TOKEN_NOT_FOUND(404, "Refresh Token Not Found"),
+    COMMENT_NOT_FOUND(404,"Comment Cannot Found"),
 
     USER_ALREADY_EXISTS(409, "User Already Exists"),
 
