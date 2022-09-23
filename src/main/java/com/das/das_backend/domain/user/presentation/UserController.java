@@ -29,6 +29,11 @@ public class UserController {
         authCodeService.execute(request);
     }
 
+    @PutMapping("/email")
+    public void verifyEmail(@RequestBody @Valid VerifyAuthCodeRequest request) {
+        verifyAuthCodeService.execute(request);
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
     public void signUp(@RequestBody @Valid UserSignUpRequest request) {
