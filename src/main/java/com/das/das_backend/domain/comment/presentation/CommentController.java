@@ -1,6 +1,7 @@
 package com.das.das_backend.domain.comment.presentation;
 
 import com.das.das_backend.domain.comment.presentation.dto.request.CreateCommentRequest;
+import com.das.das_backend.domain.comment.presentation.dto.request.UpdateCommentRequest;
 import com.das.das_backend.domain.comment.service.CreateCommentService;
 import com.das.das_backend.domain.comment.service.DeleteCommentService;
 import com.das.das_backend.domain.comment.service.UpdateCommentService;
@@ -26,7 +27,7 @@ public class CommentController {
 
     @PutMapping("/{comment-id}")
     public void modifyComment(@PathVariable("comment-id") Integer commentId,
-                              @RequestBody @Valid UpdateCommentService request) {
+                              @RequestBody @Valid UpdateCommentRequest request) {
         updateCommentService.modifyComment(commentId, request);
     }
 
