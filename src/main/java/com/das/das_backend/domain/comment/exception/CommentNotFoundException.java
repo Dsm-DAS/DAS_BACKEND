@@ -5,7 +5,7 @@ import com.das.das_backend.global.error.ErrorCode;
 
 public class CommentNotFoundException extends DasException {
 
-    public static final CommentNotFoundException EXCEPTION =
+    public static final DasException EXCEPTION =
             new CommentNotFoundException();
 
     private CommentNotFoundException() {

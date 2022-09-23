@@ -5,7 +5,7 @@ import com.das.das_backend.global.error.ErrorCode;
 
 public class CommentCannotDeleteException extends DasException {
 
-    public static final CommentCannotDeleteException EXCEPTION =
+    public static final DasException EXCEPTION =
             new CommentCannotDeleteException();
 
     private CommentCannotDeleteException() {

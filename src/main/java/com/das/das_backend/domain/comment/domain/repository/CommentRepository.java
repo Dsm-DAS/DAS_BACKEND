@@ -9,6 +9,5 @@ import java.util.Optional;
 @Repository
 public interface CommentRepository extends CrudRepository<Comment, Integer> {
 
-    Optional<Comment> findById(Integer commentId);
-
+    
 }
