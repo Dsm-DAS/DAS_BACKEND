@@ -3,6 +3,7 @@ package com.das.das_backend.domain.comment.service;
 import com.das.das_backend.domain.comment.domain.Comment;
 import com.das.das_backend.domain.comment.exception.CommentCannotUpdateException;
 import com.das.das_backend.domain.comment.facade.CommentFacade;
+import com.das.das_backend.domain.comment.presentation.dto.request.UpdateCommentRequest;
 import com.das.das_backend.domain.user.domain.User;
 import com.das.das_backend.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
@@ -19,11 +20,11 @@ public class UpdateCommentService {
     private final CommentFacade commentFacade;
 
     @Transactional
-    public void modifyComment(Integer commentId, UpdateCommentService request) {
+    public void modifyComment(Integer commentId, UpdateCommentRequest request) {
         User user = userFacade.getCurrentUser();
-        Comment comment = commentFacade.getComment();
+        Comment comment = commentFacade.getComment(commentId);
 
-        if(!user.equals(comment.getUser()) {
+        if(!user.equals(comment.getUser())) {
             throw CommentCannotUpdateException.EXCEPTION;
         }
 
