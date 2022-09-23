@@ -19,7 +19,7 @@ public class UpdateCommentService {
     private final CommentFacade commentFacade;
 
     @Transactional
-    public void modifyComment(Integer commentId, @Valid UpdateCommentService request) {
+    public void modifyComment(Integer commentId, UpdateCommentService request) {
         User user = userFacade.getCurrentUser();
         Comment comment = commentFacade.getComment();
 
