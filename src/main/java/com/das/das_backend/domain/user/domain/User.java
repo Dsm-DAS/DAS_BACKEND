@@ -35,15 +35,15 @@ public class User extends BaseIdEntity {
     private String name;
 
     @NotNull
-    @Max(1)
+    @Max(3)
     private Integer grade;
 
     @NotNull
-    @Max(1)
+    @Max(4)
     private Integer classNum;
 
     @NotNull
-    @Max(2)
+    @Max(20)
     private Integer number;
 
     @NotNull
