@@ -58,3 +58,5 @@ logging:
         util:
           EC2MetadataUtils: error
 
+socket:
+  port: 8081
