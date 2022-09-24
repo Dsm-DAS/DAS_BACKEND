@@ -8,6 +8,8 @@ import lombok.Getter;
 public enum ErrorCode {
 
     WRONG_EMAIL(400, "Wrong Email"),
+    IMAGE_VALUE_NOT_FOUND(400, "Image Value Not Found"),
+    SAVE_IMAGE_FAILED(400, "Save Image Failed"),
 
     INVALID_TOKEN(401, "Invalid Token"),
     INVALID_REFRESH_TOKEN(401, "Invalid Refresh Token"),
