@@ -1,5 +1,7 @@
 package com.das.das_backend.global.security;
 
+import com.das.das_backend.global.security.jwt.JwtTokenProvider;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +17,9 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig {
+
+    private final JwtTokenProvider jwtTokenProvider;
+    private final ObjectMapper objectMapper;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -61,6 +66,10 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.PATCH, "/notice/{notice-id}").hasAuthority("TEACHER, MANAGER")
                 .antMatchers(HttpMethod.DELETE, "/notice/{notice-id}").hasAuthority("TEACHER, MANAGER")
                 .anyRequest().denyAll()
+
+                .and()
+                .apply(new FilterConfig(jwtTokenProvider, objectMapper))
+
                 .and().build();
     }
 
