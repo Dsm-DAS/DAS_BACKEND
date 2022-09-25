@@ -30,6 +30,8 @@ public enum ErrorCode {
     COMMENT_NOT_FOUND(404,"Comment Cannot Found"),
 
     USER_ALREADY_EXISTS(409, "User Already Exists"),
+    LIKE_EXIST(409, "Like Exist"),
+    REMOVE_LIKE_EXIST(409, "Remove Like Exist"),
 
     INTERNAL_SERVER_ERROR(500, "Internal Server Error");
 
