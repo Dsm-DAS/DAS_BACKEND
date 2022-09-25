@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
-@RequestMapping("/feed")
+@RequestMapping("/like")
 @RestController
 public class LikeController {
 
@@ -20,7 +20,7 @@ public class LikeController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("{feed-id}")
+    @DeleteMapping("/{feed-id}")
     public LikeResponse deleteLiked(@PathVariable("feed-id") Integer feedId) {
         return likeService.deleteLiked(feedId);
     }
