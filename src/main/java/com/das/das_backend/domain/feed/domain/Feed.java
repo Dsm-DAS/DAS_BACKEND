@@ -54,4 +54,12 @@ public class Feed extends BaseTimeIdEntity {
         this.dasUrl = dasUrl;
     }
 
+    public void addLikeCount() {
+        this.likeCounts += 1;
+    }
+
+    public void subLikeCount() {
+        this.likeCounts -= 1;
+    }
+
 }
