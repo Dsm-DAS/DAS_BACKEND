@@ -5,7 +5,7 @@ import com.das.das_backend.global.error.ErrorCode;
 
 public class UnVerifiedAuthCodeException extends DasException {
 
-    public static DasException EXCEPTION =
+    public static final DasException EXCEPTION =
             new UnVerifiedAuthCodeException();
 
     private UnVerifiedAuthCodeException() {

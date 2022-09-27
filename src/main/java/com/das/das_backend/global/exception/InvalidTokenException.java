@@ -5,7 +5,7 @@ import com.das.das_backend.global.error.ErrorCode;
 
 public class InvalidTokenException extends DasException {
 
-    public static DasException EXCEPTION =
+    public static final DasException EXCEPTION =
             new InvalidTokenException();
 
     private InvalidTokenException() {
