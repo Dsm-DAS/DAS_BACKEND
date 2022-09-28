@@ -28,6 +28,7 @@ public enum ErrorCode {
     FEED_NOT_FOUND(404, "Feed Not Found"),
     REFRESH_TOKEN_NOT_FOUND(404, "Refresh Token Not Found"),
     COMMENT_NOT_FOUND(404,"Comment Cannot Found"),
+    SEND_CODE_FAILED(404, "Send Code Failed"),
 
     USER_ALREADY_EXISTS(409, "User Already Exists"),
     LIKE_EXIST(409, "Like Exist"),
