@@ -28,7 +28,7 @@ public class JmsUtil {
 
             mimeMessageHelper.setTo(email);
             mimeMessageHelper.setFrom(jmsProperties.getUsername());
-            mimeMessageHelper.setSubject("Das 이메일 인증");
+            mimeMessageHelper.setSubject("[Das] 이메일 인증");
 
             String text = "인증코드 : " + code;
             mimeMessageHelper.setText(text);
