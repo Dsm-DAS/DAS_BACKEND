@@ -5,7 +5,8 @@ import com.das.das_backend.domain.user.domain.repository.AuthCodeRepository;
 import com.das.das_backend.domain.user.exception.InvalidAuthCodeException;
 import com.das.das_backend.domain.user.exception.UnVerifiedAuthCodeException;
 import com.das.das_backend.domain.user.exception.WrongEmailException;
-import com.das.das_backend.global.util.JmsUtil;
+import com.das.das_backend.global.util.jms.JmsProperties;
+import com.das.das_backend.global.util.jms.JmsUtil;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Component;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
 public class AuthCodeFacade {
 
     private final AuthCodeRepository authCodeRepository;
+    private final JmsProperties jmsProperties;
     private final JmsUtil jmsUtil;
 
     public AuthCode getAuthCodeById(String email) {
@@ -30,24 +32,32 @@ public class AuthCodeFacade {
 
     public void sendEmail(String email) {
 
-        if(!isValid(email)) {
-            throw WrongEmailException.EXCEPTION;
-        }
+        String code = createCode();
+        AuthCode authCode = getAuthCode(email, code);
+        authCodeRepository.save(authCode);
 
-        String code = createKey();
         jmsUtil.sendEmail(email, code);
+    }
 
-        authCodeRepository.save(AuthCode.builder()
+    private AuthCode getAuthCode(String email, String code) {
+        AuthCode authCode = authCodeRepository.findById(email)
+                .orElseGet(() -> createAuthCode(email, code));
+
+        authCode.updateAuthCode(code, jmsProperties.getAuthExp());
+
+        return authCode;
+    }
+
+    private AuthCode createAuthCode(String email, String code) {
+        return AuthCode.builder()
                 .email(email)
                 .code(code)
-                .build());
+                .isVerify(false)
+                .ttl(jmsProperties.getAuthExp())
+                .build();
     }
 
-    private boolean isValid(String email) {
-        return email.endsWith("@dsm.hs.kr");
-    }
-
-    private String createKey() {
+    private String createCode() {
         return RandomStringUtils.randomNumeric(6);
     }
 
