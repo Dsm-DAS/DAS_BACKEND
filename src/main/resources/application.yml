@@ -27,7 +27,6 @@ spring:
           starttls:
             enable: true
     auth-exp: ${AUTH_CODE_EXP}
-    suffix: ${SUFFIX}
 
 jwt:
   secret_key: ${SECRET_KEY}

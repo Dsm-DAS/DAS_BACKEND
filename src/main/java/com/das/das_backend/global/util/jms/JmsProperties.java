@@ -13,6 +13,5 @@ public class JmsProperties {
 
     private final String username;
     private final Integer authExp;
-    private final String suffix;
 
 }
