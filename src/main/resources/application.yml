@@ -26,6 +26,7 @@ spring:
           auth: true
           starttls:
             enable: true
+    auth-exp: ${AUTH_CODE_EXP}
 
 jwt:
   secret_key: ${SECRET_KEY}
