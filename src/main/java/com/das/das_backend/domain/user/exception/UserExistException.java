@@ -9,7 +9,7 @@ public class UserExistException extends DasException {
             new UserExistException();
 
     private UserExistException() {
-        super(ErrorCode.USER_NOT_FOUND);
+        super(ErrorCode.USER_ALREADY_EXISTS);
     }
 
 }
