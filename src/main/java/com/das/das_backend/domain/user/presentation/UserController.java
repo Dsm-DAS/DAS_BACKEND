@@ -1,6 +1,7 @@
 package com.das.das_backend.domain.user.presentation;
 
 import com.das.das_backend.domain.user.presentation.dto.request.*;
+import com.das.das_backend.domain.user.presentation.dto.response.QueryMyInfoResponse;
 import com.das.das_backend.domain.user.presentation.dto.response.TokenResponse;
 import com.das.das_backend.domain.user.service.*;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,7 @@ public class UserController {
     private final UserWithdrawalService userWithdrawalService;
     private final AuthCodeService authCodeService;
     private final VerifyAuthCodeService verifyAuthCodeService;
+    private final QueryMyInfoService queryMyInfoService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/email")
@@ -67,5 +69,10 @@ public class UserController {
     public void changePassword(@RequestBody @Valid ChangePasswordRequest request) {
         changePasswordService.execute(request);
     }
-    
+
+    @GetMapping("/mypage")
+    public QueryMyInfoResponse getMyInfo() {
+        return queryMyInfoService.getMyInfo();
+    }
+
 }
