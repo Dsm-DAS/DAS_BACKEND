@@ -21,7 +21,7 @@ public class DeleteFeedService {
     @Transactional
     public void execute(Integer feedId) {
         User user = userFacade.getCurrentUser();
-        Feed feed = feedFacade.getFeedId(feedId);
+        Feed feed = feedFacade.getFeedById(feedId);
 
         if (!user.equals(feed.getUser())) {
             throw FeedCannotDeleteException.EXCEPTION;

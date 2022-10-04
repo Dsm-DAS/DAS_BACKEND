@@ -20,7 +20,7 @@ public class UpdateFeedService {
     @Transactional
     public void execute(Integer feedId, UpdateFeedRequest request) {
         User user = userFacade.getCurrentUser();
-        Feed feed = feedFacade.getFeedId(feedId);
+        Feed feed = feedFacade.getFeedById(feedId);
 
         if (!user.equals(feed.getUser())) {
             throw FeedCannotUpdateException.EXCEPTION;
