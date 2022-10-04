@@ -8,6 +8,7 @@ import lombok.Getter;
 public class QueryMyInfoResponse {
 
     private final Integer userId;
+
     private final String email;
 
     private final String name;

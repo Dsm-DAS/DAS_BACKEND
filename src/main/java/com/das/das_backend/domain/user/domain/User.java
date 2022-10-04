@@ -75,4 +75,10 @@ public class User extends BaseIdEntity {
         this.password = password;
     }
 
+    public void modifyInfo(String name, String introduce, String profileImageUrl) {
+        this.name = name;
+        this.introduce = introduce;
+        this.profileImageUrl = profileImageUrl;
+    }
+
 }
