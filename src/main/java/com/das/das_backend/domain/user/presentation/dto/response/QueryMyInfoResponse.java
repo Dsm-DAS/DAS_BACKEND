@@ -7,6 +7,7 @@ import lombok.Getter;
 @Builder
 public class QueryMyInfoResponse {
 
+    private final Integer userId;
     private final String email;
 
     private final String name;
@@ -19,5 +20,5 @@ public class QueryMyInfoResponse {
 
     private final Integer number;
 
-    private final String ProfileImageUrl;
+    private final String profileImageUrl;
 }

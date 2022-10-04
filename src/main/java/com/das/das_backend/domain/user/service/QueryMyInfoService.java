@@ -18,13 +18,14 @@ public class QueryMyInfoService {
         User user = userFacade.getCurrentUser();
 
         return QueryMyInfoResponse.builder()
+                .userId(user.getId())
                 .name(user.getName())
                 .email(user.getEmail())
                 .grade(user.getGrade())
                 .classNum(user.getClassNum())
                 .introduce(user.getIntroduce())
                 .number(user.getNumber())
-                .ProfileImageUrl(user.getProfileImageUrl())
+                .profileImageUrl(user.getProfileImageUrl())
                 .build();
     }
 
