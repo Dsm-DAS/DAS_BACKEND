@@ -24,6 +24,7 @@ public class UserController {
     private final AuthCodeService authCodeService;
     private final VerifyAuthCodeService verifyAuthCodeService;
     private final QueryMyInfoService queryMyInfoService;
+    private final UpdateUserInfoService updateUserInfoService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/email")
@@ -73,6 +74,12 @@ public class UserController {
     @GetMapping("/mypage")
     public QueryMyInfoResponse getMyInfo() {
         return queryMyInfoService.getMyInfo();
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("/mypage")
+    public void modifyInfo(@RequestBody @Valid UpdateUserInfoRequest request) {
+        updateUserInfoService.modifyInfo(request);
     }
 
 }
