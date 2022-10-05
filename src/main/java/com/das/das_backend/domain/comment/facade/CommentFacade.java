@@ -27,7 +27,7 @@ public class CommentFacade {
     public List<CommentResponse> getComments(Feed feed) {
 
         return feed.getCommentList()
-                .stream().map(comment -> FeedDetailResponse.CommentResponse.builder()
+                .stream().map(comment -> CommentResponse.builder()
                         .commentId(comment.getId())
                         .content(comment.getContent())
                         .createdAt(comment.getCreatedAt())
