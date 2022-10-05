@@ -26,7 +26,7 @@ public class LikeService {
     @Transactional
     public LikeResponse liked(Integer feedId) {
         User user = userFacade.getCurrentUser();
-        Feed feed = feedFacade.getFeedId(feedId);
+        Feed feed = feedFacade.getFeedById(feedId);
 
         if (likeFacade.checkLiked(user, feed)) {
             throw LikeExistException.EXCEPTION;
@@ -39,7 +39,7 @@ public class LikeService {
     @Transactional
     public LikeResponse deleteLiked(Integer feedId) {
         User user = userFacade.getCurrentUser();
-        Feed feed = feedFacade.getFeedId(feedId);
+        Feed feed = feedFacade.getFeedById(feedId);
 
         if (!likeFacade.checkLiked(user, feed)) {
             throw RemoveLikeExistException.EXCEPTION;

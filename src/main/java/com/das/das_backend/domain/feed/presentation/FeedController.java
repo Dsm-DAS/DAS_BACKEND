@@ -2,8 +2,10 @@ package com.das.das_backend.domain.feed.presentation;
 
 import com.das.das_backend.domain.feed.presentation.dto.request.CreateFeedRequest;
 import com.das.das_backend.domain.feed.presentation.dto.request.UpdateFeedRequest;
+import com.das.das_backend.domain.feed.presentation.dto.response.FeedDetailResponse;
 import com.das.das_backend.domain.feed.service.CreateFeedService;
 import com.das.das_backend.domain.feed.service.DeleteFeedService;
+import com.das.das_backend.domain.feed.service.QueryFeedDetailService;
 import com.das.das_backend.domain.feed.service.UpdateFeedService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,7 @@ public class FeedController {
     private final CreateFeedService createFeedService;
     private final UpdateFeedService updateFeedService;
     private final DeleteFeedService deleteFeedService;
+    private final QueryFeedDetailService queryFeedDetailService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
@@ -37,6 +40,11 @@ public class FeedController {
     @DeleteMapping("/{feed-id}")
     public void deleteFeed(@PathVariable("feed-id") Integer feedId) {
         deleteFeedService.execute(feedId);
+    }
+
+    @GetMapping("/{feed-id}")
+    public FeedDetailResponse getFeedDetail(@PathVariable("feed-id") Integer feedId) {
+        return queryFeedDetailService.execute(feedId);
     }
 
 }

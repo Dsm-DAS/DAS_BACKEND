@@ -22,7 +22,7 @@ public class CreateCommentService {
     @Transactional
     public void createComment(Integer feedId, CreateCommentRequest request) {
         User user = userFacade.getCurrentUser();
-        Feed feed = feedFacade.getFeedId(feedId);
+        Feed feed = feedFacade.getFeedById(feedId);
 
         Comment comment = Comment.builder()
                 .content(request.getContent())
