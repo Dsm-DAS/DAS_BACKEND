@@ -40,7 +40,7 @@ public class Feed extends BaseTimeIdEntity {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "feed")
+    @OneToMany(mappedBy = "feed", cascade = CascadeType.REMOVE)
     private List<Comment> commentList;
 
     @Builder
