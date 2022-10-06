@@ -1,7 +1,6 @@
 package com.das.das_backend.domain.user.service;
 
 import com.das.das_backend.domain.user.domain.User;
-import com.das.das_backend.domain.user.domain.repository.UserRepository;
 import com.das.das_backend.domain.user.exception.PasswordMisMatchException;
 import com.das.das_backend.domain.user.facade.UserFacade;
 import com.das.das_backend.domain.user.presentation.dto.request.ChangePasswordRequest;
