@@ -2,6 +2,8 @@ package com.das.das_backend.domain.teacher.service;
 
 import com.das.das_backend.domain.teacher.presentation.dto.request.UpdateStudentInfoRequest;
 import com.das.das_backend.domain.user.domain.User;
+import com.das.das_backend.domain.user.domain.repository.UserRepository;
+import com.das.das_backend.domain.user.exception.UserNotFoundException;
 import com.das.das_backend.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,12 +14,16 @@ import org.springframework.transaction.annotation.Transactional;
 public class UpdateStudentInfoService {
 
     private final UserFacade userFacade;
+    private final UserRepository userRepository;
 
     @Transactional
     public void execute(UpdateStudentInfoRequest request) {
-        User user = userFacade.getCurrentUser();
+        User currentUser = userFacade.getCurrentUser();
 
-        user.teacherModifyUser(request.getName(), request.getGrade(),
+        User targetUser = userRepository.findById(request.getTargetUserId())
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
+
+        targetUser.teacherModifyUser(request.getName(), request.getGrade(),
                 request.getClassNum(), request.getNumber());
     }
 

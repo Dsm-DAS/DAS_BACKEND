@@ -16,7 +16,7 @@ public class UpdateStudentInfoRequest {
     private String name;
 
     @NotNull
-    private Integer userId;
+    private Integer targetUserId;
 
     @NotNull
     private Integer grade;
