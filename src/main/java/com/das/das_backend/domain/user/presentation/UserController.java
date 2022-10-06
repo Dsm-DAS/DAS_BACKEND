@@ -71,13 +71,13 @@ public class UserController {
         changePasswordService.execute(request);
     }
 
-    @GetMapping("/mypage")
+    @GetMapping("/my-page")
     public QueryMyInfoResponse getMyInfo() {
         return queryMyInfoService.getMyInfo();
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PutMapping("/mypage")
+    @PutMapping("/my-page")
     public void modifyInfo(@RequestBody @Valid UpdateUserInfoRequest request) {
         updateUserInfoService.modifyInfo(request);
     }
