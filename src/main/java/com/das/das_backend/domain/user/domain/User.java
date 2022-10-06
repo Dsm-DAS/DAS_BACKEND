@@ -81,4 +81,11 @@ public class User extends BaseIdEntity {
         this.profileImageUrl = profileImageUrl;
     }
 
+    public void teacherModifyUser(String name, Integer grade, Integer classNum, Integer number) {
+        this.name = name;
+        this.grade = grade;
+        this.classNum = classNum;
+        this.number = number;
+    }
+
 }
