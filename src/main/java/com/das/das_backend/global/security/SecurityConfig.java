@@ -39,11 +39,11 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.POST, "/user/email").permitAll()
                 .antMatchers(HttpMethod.POST, "/user/signup").permitAll()
                 .antMatchers(HttpMethod.POST,"/user/token").permitAll()
+                .antMatchers(HttpMethod.PATCH, "/user/token").permitAll()
                 .antMatchers(HttpMethod.PUT, "/user/email").permitAll()
                 .antMatchers(HttpMethod.GET, "/user/my-page").authenticated()
-                .antMatchers(HttpMethod.PATCH, "/user/token").authenticated()
+                .antMatchers(HttpMethod.PUT, "/user/my-page").authenticated()
                 .antMatchers(HttpMethod.PATCH,"/user/password").authenticated()
-                .antMatchers(HttpMethod.PATCH, "/user/my-page").authenticated()
                 .antMatchers(HttpMethod.DELETE, "/user/logout").authenticated()
                 .antMatchers(HttpMethod.DELETE, "/user").authenticated()
 
