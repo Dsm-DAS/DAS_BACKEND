@@ -61,12 +61,12 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.DELETE,"/comment/{comment-id}").authenticated()
 
                 // notice
-                .antMatchers(HttpMethod.POST, "/notice").hasAuthority("TEACHER, MANAGER")
-                .antMatchers(HttpMethod.PATCH, "/notice/{notice-id}").hasAuthority("TEACHER, MANAGER")
-                .antMatchers(HttpMethod.DELETE, "/notice/{notice-id}").hasAuthority("TEACHER, MANAGER")
+                .antMatchers(HttpMethod.POST, "/notice").hasAnyAuthority("TEACHER", "MANAGER")
+                .antMatchers(HttpMethod.PATCH, "/notice/{notice-id}").hasAnyAuthority("TEACHER", "MANAGER")
+                .antMatchers(HttpMethod.DELETE, "/notice/{notice-id}").hasAnyAuthority("TEACHER", "MANAGER")
 
                 // teacher
-                .antMatchers(HttpMethod.PUT, "/teacher").hasAuthority("TEACHER, MANAGER")
+                .antMatchers(HttpMethod.PUT, "/teacher").hasAnyAuthority("TEACHER", "MANAGER")
                 .anyRequest().denyAll()
 
                 .and()
