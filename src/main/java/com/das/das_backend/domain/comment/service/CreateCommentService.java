@@ -29,6 +29,7 @@ public class CreateCommentService {
                 .user(user)
                 .feed(feed)
                 .build();
+
         commentRepository.save(comment);
     }
 

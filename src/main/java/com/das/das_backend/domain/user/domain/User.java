@@ -57,9 +57,12 @@ public class User extends BaseIdEntity {
     @Size(max = 50)
     private String introduce;
 
+    @NotNull
+    private Integer viewCounts;
+
     @Builder
-    public User(String email, String password, String name,
-                Integer grade, Integer classNum, Integer number, Authority authority, String profileImageUrl, String introduce) {
+    public User(String email, String password, String name, Integer grade, Integer classNum,
+                Integer number, Authority authority, String profileImageUrl, String introduce, Integer viewCounts) {
         this.email = email;
         this.password = password;
         this.name = name;
@@ -69,6 +72,7 @@ public class User extends BaseIdEntity {
         this.authority = authority;
         this.profileImageUrl = profileImageUrl;
         this.introduce = introduce;
+        this.viewCounts = viewCounts;
     }
 
     public void changePassword(String password) {
