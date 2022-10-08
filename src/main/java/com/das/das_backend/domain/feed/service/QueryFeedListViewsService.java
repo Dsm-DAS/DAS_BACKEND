@@ -6,6 +6,7 @@ import com.das.das_backend.domain.feed.presentation.dto.response.QueryFeedListRe
 import com.das.das_backend.domain.user.presentation.dto.response.WriterResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,6 +17,7 @@ public class QueryFeedListViewsService {
 
     private final FeedRepository feedRepository;
 
+    @Transactional(readOnly = true)
     public QueryFeedListResponse execute() {
 
         List<FeedResponse> feedList = feedRepository.findAllOrderByViewsDesc().stream()
