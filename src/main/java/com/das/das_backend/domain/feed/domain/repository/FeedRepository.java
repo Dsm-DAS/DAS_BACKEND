@@ -7,8 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface FeedRepository extends CrudRepository<Feed, Integer> {
-
-    @Query("select f from Feed f order by f.views desc ")
-    List<Feed> findAllOrderByViewsDesc();
+    
+    List<Feed> findAllByOrderByViewsDesc();
 
 }

@@ -20,7 +20,7 @@ public class QueryFeedListViewsService {
     @Transactional(readOnly = true)
     public QueryFeedListResponse execute() {
 
-        List<FeedResponse> feedList = feedRepository.findAllOrderByViewsDesc().stream()
+        List<FeedResponse> feedList = feedRepository.findAllByOrderByViewsDesc().stream()
                 .map(feed -> FeedResponse.builder()
                         .feedId(feed.getId())
                         .title(feed.getTitle())
