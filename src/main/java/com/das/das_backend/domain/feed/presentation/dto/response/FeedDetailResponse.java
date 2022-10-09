@@ -1,5 +1,6 @@
 package com.das.das_backend.domain.feed.presentation.dto.response;
 
+import com.das.das_backend.domain.user.presentation.dto.response.WriterResponse;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -19,7 +20,7 @@ public class FeedDetailResponse {
     private final Integer views;
     private final Integer likeCounts;
     private final boolean liked;
-    private final Writer writer;
+    private final WriterResponse writer;
     private final List<CommentResponse> commentList;
 
     @Getter
@@ -29,15 +30,7 @@ public class FeedDetailResponse {
         private final String content;
         private final LocalDateTime createdAt;
         private final LocalDateTime updatedAt;
-        private final Writer writer;
-    }
-
-    @Getter
-    @Builder
-    public static class Writer {
-        private final Integer userId;
-        private final String name;
-        private final String profileImageUrl;
+        private final WriterResponse writer;
     }
 
 }

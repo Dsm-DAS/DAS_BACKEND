@@ -4,9 +4,8 @@ import com.das.das_backend.domain.comment.domain.Comment;
 import com.das.das_backend.domain.comment.domain.repository.CommentRepository;
 import com.das.das_backend.domain.comment.exception.CommentNotFoundException;
 import com.das.das_backend.domain.feed.domain.Feed;
-import com.das.das_backend.domain.feed.presentation.dto.response.FeedDetailResponse;
 import com.das.das_backend.domain.feed.presentation.dto.response.FeedDetailResponse.CommentResponse;
-import com.das.das_backend.domain.feed.presentation.dto.response.FeedDetailResponse.Writer;
+import com.das.das_backend.domain.user.presentation.dto.response.WriterResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -32,7 +31,7 @@ public class CommentFacade {
                         .content(comment.getContent())
                         .createdAt(comment.getCreatedAt())
                         .updatedAt(comment.getUpdatedAt())
-                        .writer(Writer.builder()
+                        .writer(WriterResponse.builder()
                                 .userId(comment.getUser().getId())
                                 .name(comment.getUser().getName())
                                 .profileImageUrl(comment.getUser().getProfileImageUrl())

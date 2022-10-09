@@ -14,9 +14,6 @@ import javax.mail.internet.MimeMessage;
 @Component
 public class JmsUtil {
 
-    @Value("${spring.mail.username}")
-    private String from;
-
     private final JavaMailSender javaMailSender;
     private final JmsProperties jmsProperties;
 
