@@ -26,4 +26,9 @@ public class UserFacade {
         }
     }
 
+    public User getUserById(Integer userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
+    }
+
 }

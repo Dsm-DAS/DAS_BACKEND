@@ -24,6 +24,7 @@ public class UserController {
     private final AuthCodeService authCodeService;
     private final VerifyAuthCodeService verifyAuthCodeService;
     private final QueryMyInfoService queryMyInfoService;
+    private final QueryUserInfoService queryUserInfoService;
     private final UpdateUserInfoService updateUserInfoService;
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -73,13 +74,18 @@ public class UserController {
 
     @GetMapping("/my-page")
     public QueryMyInfoResponse getMyInfo() {
-        return queryMyInfoService.getMyInfo();
+        return queryMyInfoService.execute();
+    }
+
+    @GetMapping("/{user-id}")
+    public QueryMyInfoResponse getUserInfo(@PathVariable("user-id") Integer userId) {
+        return queryUserInfoService.execute(userId);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/my-page")
     public void modifyInfo(@RequestBody @Valid UpdateUserInfoRequest request) {
-        updateUserInfoService.modifyInfo(request);
+        updateUserInfoService.execute(request);
     }
 
 }
