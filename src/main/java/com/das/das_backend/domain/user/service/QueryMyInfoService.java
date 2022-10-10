@@ -14,7 +14,7 @@ public class QueryMyInfoService {
     private final UserFacade userFacade;
 
     @Transactional(readOnly = true)
-    public QueryMyInfoResponse getMyInfo() {
+    public QueryMyInfoResponse execute() {
         User user = userFacade.getCurrentUser();
 
         return QueryMyInfoResponse.builder()

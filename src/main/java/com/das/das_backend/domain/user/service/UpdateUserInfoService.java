@@ -14,7 +14,7 @@ public class UpdateUserInfoService {
     private final UserFacade userFacade;
 
     @Transactional
-    public void modifyInfo(UpdateUserInfoRequest request) {
+    public void execute(UpdateUserInfoRequest request) {
         User user = userFacade.getCurrentUser();
 
         user.modifyInfo(request.getName(), request.getIntroduce(), request.getProfileImageUrl());
