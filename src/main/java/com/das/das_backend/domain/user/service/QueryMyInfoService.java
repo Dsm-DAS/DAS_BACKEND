@@ -26,6 +26,7 @@ public class QueryMyInfoService {
                 .introduce(user.getIntroduce())
                 .number(user.getNumber())
                 .profileImageUrl(user.getProfileImageUrl())
+                .viewCounts(user.getViewCounts())
                 .build();
     }
 
