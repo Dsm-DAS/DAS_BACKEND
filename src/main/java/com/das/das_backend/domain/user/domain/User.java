@@ -92,4 +92,8 @@ public class User extends BaseIdEntity {
         this.number = number;
     }
 
+    public void addViews() {
+        this.viewCounts += 1;
+    }
+
 }
