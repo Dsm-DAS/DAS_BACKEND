@@ -22,4 +22,6 @@ public class QueryMyInfoResponse {
     private final Integer number;
 
     private final String profileImageUrl;
+
+    private final Integer viewCounts;
 }

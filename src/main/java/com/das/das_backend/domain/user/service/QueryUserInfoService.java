@@ -9,13 +9,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
-public class QueryMyInfoService {
+public class QueryUserInfoService {
 
     private final UserFacade userFacade;
 
-    @Transactional(readOnly = true)
-    public QueryMyInfoResponse execute() {
-        User user = userFacade.getCurrentUser();
+    @Transactional
+    public QueryMyInfoResponse execute(Integer userId) {
+
+        User user = userFacade.getUserById(userId);
+        user.addViews();
 
         return QueryMyInfoResponse.builder()
                 .userId(user.getId())

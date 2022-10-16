@@ -10,7 +10,10 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -90,6 +93,10 @@ public class User extends BaseIdEntity {
         this.grade = grade;
         this.classNum = classNum;
         this.number = number;
+    }
+
+    public void addViews() {
+        this.viewCounts += 1;
     }
 
 }
