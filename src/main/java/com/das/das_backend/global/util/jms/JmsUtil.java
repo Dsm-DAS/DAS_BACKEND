@@ -2,7 +2,6 @@ package com.das.das_backend.global.util.jms;
 
 import com.das.das_backend.global.exception.SendCodeFailedException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
@@ -19,18 +18,18 @@ public class JmsUtil {
 
     public void sendEmail(String email, String code) {
 
-        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         try {
-            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage,false,"UTF-8");
+            MimeMessage message = javaMailSender.createMimeMessage();
+            MimeMessageHelper messageHelper = new MimeMessageHelper(message, false, "UTF-8");
 
-            mimeMessageHelper.setTo(email);
-            mimeMessageHelper.setFrom(jmsProperties.getUsername());
-            mimeMessageHelper.setSubject("[Das] 이메일 인증");
+            messageHelper.setTo(email);
+            messageHelper.setFrom(jmsProperties.getUsername());
+            messageHelper.setSubject("[Das] 이메일 인증");
 
             String text = "인증코드 : " + code;
-            mimeMessageHelper.setText(text);
+            messageHelper.setText(text);
 
-            javaMailSender.send(mimeMessage);
+             javaMailSender.send(message);
         } catch (MessagingException e) {
             throw SendCodeFailedException.EXCEPTION;
         }
