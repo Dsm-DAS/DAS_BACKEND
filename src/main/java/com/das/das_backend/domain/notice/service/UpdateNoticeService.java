@@ -19,6 +19,7 @@ public class UpdateNoticeService {
 
         Notice notice = noticeRepository.findById(noticeId)
                 .orElseThrow(() -> NoticeNotFoundException.EXCEPTION);
+        
         notice.updateNotice(request.getTitle(), request.getContent());
     }
 
