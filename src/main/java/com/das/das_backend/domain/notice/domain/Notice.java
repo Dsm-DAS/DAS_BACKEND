@@ -39,4 +39,9 @@ public class Notice extends BaseTimeIdEntity {
         this.user = user;
     }
 
+    public void updateNotice(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
 }
