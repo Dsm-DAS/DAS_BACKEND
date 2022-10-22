@@ -2,7 +2,9 @@ package com.das.das_backend.domain.notice.presentation;
 
 
 import com.das.das_backend.domain.notice.presentation.dto.request.CreateNoticeRequest;
+import com.das.das_backend.domain.notice.presentation.dto.request.UpdateNoticeRequest;
 import com.das.das_backend.domain.notice.service.CreateNoticeService;
+import com.das.das_backend.domain.notice.service.UpdateNoticeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,7 @@ import javax.validation.Valid;
 public class NoticeController {
 
     private final CreateNoticeService createNoticeService;
+    private final UpdateNoticeService updateNoticeService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
@@ -22,5 +25,11 @@ public class NoticeController {
         createNoticeService.execute(request);
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PatchMapping("/{notice-id}")
+    public void updateNotice(@RequestBody @Valid UpdateNoticeRequest request,
+                             @PathVariable(name = "notice-id") Integer noticeId) {
+        updateNoticeService.execute(request, noticeId);
+    }
 
 }
