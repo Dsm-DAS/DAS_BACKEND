@@ -4,6 +4,7 @@ package com.das.das_backend.domain.notice.presentation;
 import com.das.das_backend.domain.notice.presentation.dto.request.CreateNoticeRequest;
 import com.das.das_backend.domain.notice.presentation.dto.request.UpdateNoticeRequest;
 import com.das.das_backend.domain.notice.service.CreateNoticeService;
+import com.das.das_backend.domain.notice.service.DeleteNoticeService;
 import com.das.das_backend.domain.notice.service.UpdateNoticeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ public class NoticeController {
 
     private final CreateNoticeService createNoticeService;
     private final UpdateNoticeService updateNoticeService;
+    private final DeleteNoticeService deleteNoticeService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
@@ -35,7 +37,7 @@ public class NoticeController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{notice-id}")
     public void deleteNotice(@PathVariable(name = "notice-id") Integer noticeId) {
-
+        deleteNoticeService.execute(noticeId);
     }
 
 }
