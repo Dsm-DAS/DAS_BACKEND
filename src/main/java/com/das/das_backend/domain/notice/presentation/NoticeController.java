@@ -32,4 +32,10 @@ public class NoticeController {
         updateNoticeService.execute(request, noticeId);
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{notice-id}")
+    public void deleteNotice(@PathVariable(name = "notice-id") Integer noticeId) {
+
+    }
+
 }
