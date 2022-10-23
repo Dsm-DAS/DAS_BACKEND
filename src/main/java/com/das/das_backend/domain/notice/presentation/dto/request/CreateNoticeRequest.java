@@ -12,11 +12,11 @@ import javax.validation.constraints.Size;
 public class CreateNoticeRequest {
 
     @NotBlank
-    @Size(min = 1, max = 20)
+    @Size(max = 20)
     private String title;
 
     @NotBlank
-    @Size(min = 1, max = 1000)
+    @Size(max = 1000)
     private String content;
 
 }
