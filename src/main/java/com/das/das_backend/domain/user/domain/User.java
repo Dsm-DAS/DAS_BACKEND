@@ -2,6 +2,7 @@ package com.das.das_backend.domain.user.domain;
 
 import com.das.das_backend.global.entity.BaseIdEntity;
 import com.das.das_backend.global.enums.Authority;
+import com.das.das_backend.global.enums.Sex;
 import com.das.das_backend.infrastructure.s3.DefaultImage;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -53,6 +54,10 @@ public class User extends BaseIdEntity {
     @Enumerated(EnumType.STRING)
     private Authority authority;
 
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private Sex sex;
+
     @ColumnDefault(DefaultImage.USER_PROFILE_IMAGE)
     @Column(nullable = false)
     private String profileImageUrl;
@@ -65,7 +70,7 @@ public class User extends BaseIdEntity {
 
     @Builder
     public User(String email, String password, String name, Integer grade, Integer classNum,
-                Integer number, Authority authority, String profileImageUrl, String introduce, Integer viewCounts) {
+                Integer number, Authority authority, Sex sex, String profileImageUrl, String introduce, Integer viewCounts) {
         this.email = email;
         this.password = password;
         this.name = name;
@@ -73,6 +78,7 @@ public class User extends BaseIdEntity {
         this.classNum = classNum;
         this.number = number;
         this.authority = authority;
+        this.sex = sex;
         this.profileImageUrl = profileImageUrl;
         this.introduce = introduce;
         this.viewCounts = viewCounts;

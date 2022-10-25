@@ -2,8 +2,6 @@ package com.das.das_backend.domain.user.service;
 
 import com.das.das_backend.domain.user.domain.User;
 import com.das.das_backend.domain.user.domain.repository.UserRepository;
-import com.das.das_backend.domain.user.exception.UnVerifiedAuthCodeException;
-import com.das.das_backend.domain.user.exception.UserAlreadyExistsException;
 import com.das.das_backend.domain.user.facade.AuthCodeFacade;
 import com.das.das_backend.domain.user.facade.UserFacade;
 import com.das.das_backend.domain.user.presentation.dto.request.UserSignUpRequest;
@@ -34,6 +32,7 @@ public class UserSignUpService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .name(request.getName())
                 .authority(Authority.USER)
+                .sex(request.getSex())
                 .profileImageUrl(DefaultImage.USER_PROFILE_IMAGE)
                 .grade(request.getGrade())
                 .classNum(request.getClassNum())
