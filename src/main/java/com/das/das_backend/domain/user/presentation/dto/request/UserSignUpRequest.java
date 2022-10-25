@@ -1,5 +1,6 @@
 package com.das.das_backend.domain.user.presentation.dto.request;
 
+import com.das.das_backend.global.enums.Sex;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -29,5 +30,8 @@ public class UserSignUpRequest {
 
     @NotNull
     private Integer number;
+
+    @NotNull
+    private Sex sex;
 
 }

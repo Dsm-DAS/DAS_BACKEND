@@ -32,6 +32,7 @@ public class UserSignUpService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .name(request.getName())
                 .authority(Authority.USER)
+                .sex(request.getSex())
                 .profileImageUrl(DefaultImage.USER_PROFILE_IMAGE)
                 .grade(request.getGrade())
                 .classNum(request.getClassNum())
