@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Builder
-public class FeedDetailResponse {
+public class QueryFeedDetailResponse {
 
     private final Integer feedId;
     private final String title;

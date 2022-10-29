@@ -3,7 +3,7 @@ package com.das.das_backend.domain.feed.service;
 import com.das.das_backend.domain.comment.facade.CommentFacade;
 import com.das.das_backend.domain.feed.domain.Feed;
 import com.das.das_backend.domain.feed.facade.FeedFacade;
-import com.das.das_backend.domain.feed.presentation.dto.response.FeedDetailResponse;
+import com.das.das_backend.domain.feed.presentation.dto.response.QueryFeedDetailResponse;
 import com.das.das_backend.domain.like.facade.LikeFacade;
 import com.das.das_backend.domain.user.domain.User;
 import com.das.das_backend.domain.user.facade.UserFacade;
@@ -22,14 +22,14 @@ public class QueryFeedDetailService {
     private final CommentFacade commentFacade;
 
     @Transactional
-    public FeedDetailResponse execute(Integer feedId) {
+    public QueryFeedDetailResponse execute(Integer feedId) {
 
         User user = userFacade.getCurrentUser();
 
         Feed feed = feedFacade.getFeedById(feedId);
         feed.addViews();
 
-        return FeedDetailResponse.builder()
+        return QueryFeedDetailResponse.builder()
                 .feedId(feedId)
                 .title(feed.getTitle())
                 .content(feed.getContent())
