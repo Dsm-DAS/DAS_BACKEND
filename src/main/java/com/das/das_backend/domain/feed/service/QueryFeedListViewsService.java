@@ -20,7 +20,8 @@ public class QueryFeedListViewsService {
     @Transactional(readOnly = true)
     public QueryFeedListResponse execute() {
 
-        List<FeedResponse> feedList = feedRepository.findAllByOrderByViewsDesc().stream()
+        List<FeedResponse> feedList = feedRepository.findAllByOrderByViewsDesc()
+                .stream()
                 .map(feed -> FeedResponse.builder()
                         .writer(WriterResponse.builder()
                                 .userId(feed.getUser().getId())

@@ -20,7 +20,8 @@ public class QueryFeedListService {
 
     public QueryFeedListResponse execute() {
 
-        List<FeedResponse> feedList = feedRepository.findAllByOrderByCreatedAtDesc().stream()
+        List<FeedResponse> feedList = feedRepository.findAllByOrderByCreatedAtDesc()
+                .stream()
                 .map(feed -> FeedResponse.builder()
                         .writer(WriterResponse.builder()
                                 .userId(feed.getUser().getId())
