@@ -1,6 +1,7 @@
 package com.das.das_backend.domain.feed.service;
 
 import com.das.das_backend.domain.feed.domain.repository.FeedRepository;
+import com.das.das_backend.domain.feed.facade.FeedFacade;
 import com.das.das_backend.domain.feed.presentation.dto.response.QueryFeedListResponse;
 import com.das.das_backend.domain.feed.presentation.dto.response.QueryFeedListResponse.FeedResponse;
 import com.das.das_backend.domain.user.presentation.dto.response.WriterResponse;
@@ -13,14 +14,15 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
-public class QueryFeedListViewsService {
+public class QueryFeedListService {
 
     private final FeedRepository feedRepository;
+    private final FeedFacade feedFacade;
 
     @Transactional(readOnly = true)
     public QueryFeedListResponse execute() {
 
-        List<FeedResponse> feedList = feedRepository.findAllByOrderByViewsDesc()
+        List<FeedResponse> feedList = feedRepository.findAllByOrderByCreatedAtDesc()
                 .stream()
                 .map(feed -> FeedResponse.builder()
                         .writer(WriterResponse.builder()
