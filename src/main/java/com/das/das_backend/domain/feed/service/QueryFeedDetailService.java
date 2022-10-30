@@ -7,7 +7,6 @@ import com.das.das_backend.domain.feed.presentation.dto.response.QueryFeedDetail
 import com.das.das_backend.domain.like.facade.LikeFacade;
 import com.das.das_backend.domain.user.domain.User;
 import com.das.das_backend.domain.user.facade.UserFacade;
-import com.das.das_backend.domain.user.presentation.dto.response.WriterResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +26,8 @@ public class QueryFeedDetailService {
         User user = userFacade.getCurrentUser();
 
         Feed feed = feedFacade.getFeedById(feedId);
+        User writer = feed.getUser();
+
         feed.addViews();
 
         return QueryFeedDetailResponse.builder()
@@ -39,11 +40,7 @@ public class QueryFeedDetailService {
                 .views(feed.getViews())
                 .likeCounts(feed.getLikeCounts())
                 .liked(likeFacade.checkLiked(user, feed))
-                .writer(WriterResponse.builder()
-                        .userId(feed.getUser().getId())
-                        .name(feed.getUser().getName())
-                        .profileImageUrl(feed.getUser().getProfileImageUrl())
-                        .build())
+                .writer(userFacade.getWriter(writer))
                 .commentList(commentFacade.getComments(feed))
                 .build();
     }

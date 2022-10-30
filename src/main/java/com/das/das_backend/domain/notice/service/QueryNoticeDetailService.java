@@ -3,7 +3,8 @@ package com.das.das_backend.domain.notice.service;
 import com.das.das_backend.domain.notice.domain.Notice;
 import com.das.das_backend.domain.notice.facade.NoticeFacade;
 import com.das.das_backend.domain.notice.presentation.dto.response.QueryNoticeDetailResponse;
-import com.das.das_backend.domain.user.presentation.dto.response.WriterResponse;
+import com.das.das_backend.domain.user.domain.User;
+import com.das.das_backend.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,11 +14,14 @@ import org.springframework.transaction.annotation.Transactional;
 public class QueryNoticeDetailService {
 
     private final NoticeFacade noticeFacade;
+    private final UserFacade userFacade;
 
     @Transactional
     public QueryNoticeDetailResponse execute(Integer noticeId) {
 
         Notice notice = noticeFacade.getNoticeById(noticeId);
+        User writer = notice.getUser();
+
         notice.addViews();
 
         return QueryNoticeDetailResponse.builder()
@@ -27,11 +31,7 @@ public class QueryNoticeDetailService {
                 .createdAt(notice.getCreatedAt())
                 .updatedAt(notice.getUpdatedAt())
                 .views(notice.getViews())
-                .writer(WriterResponse.builder()
-                        .userId(notice.getUser().getId())
-                        .name(notice.getUser().getName())
-                        .profileImageUrl(notice.getUser().getProfileImageUrl())
-                        .build())
+                .writer(userFacade.getWriter(writer))
                 .build();
     }
 
