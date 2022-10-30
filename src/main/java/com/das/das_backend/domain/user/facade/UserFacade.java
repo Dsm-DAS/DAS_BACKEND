@@ -4,6 +4,7 @@ import com.das.das_backend.domain.user.domain.User;
 import com.das.das_backend.domain.user.domain.repository.UserRepository;
 import com.das.das_backend.domain.user.exception.UserAlreadyExistsException;
 import com.das.das_backend.domain.user.exception.UserNotFoundException;
+import com.das.das_backend.domain.user.presentation.dto.response.WriterResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -29,6 +30,14 @@ public class UserFacade {
     public User getUserById(Integer userId) {
         return userRepository.findById(userId)
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
+    }
+
+    public WriterResponse getWriter(User writer) {
+        return WriterResponse.builder()
+                .userId(writer.getId())
+                .name(writer.getName())
+                .profileImageUrl(writer.getProfileImageUrl())
+                .build();
     }
 
 }
