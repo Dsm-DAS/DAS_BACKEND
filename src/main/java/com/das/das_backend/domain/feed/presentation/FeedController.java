@@ -2,7 +2,7 @@ package com.das.das_backend.domain.feed.presentation;
 
 import com.das.das_backend.domain.feed.presentation.dto.request.CreateFeedRequest;
 import com.das.das_backend.domain.feed.presentation.dto.request.UpdateFeedRequest;
-import com.das.das_backend.domain.feed.presentation.dto.response.FeedDetailResponse;
+import com.das.das_backend.domain.feed.presentation.dto.response.QueryFeedDetailResponse;
 import com.das.das_backend.domain.feed.presentation.dto.response.QueryFeedListResponse;
 import com.das.das_backend.domain.feed.service.*;
 import lombok.RequiredArgsConstructor;
@@ -53,7 +53,7 @@ public class FeedController {
     }
 
     @GetMapping("/{feed-id}")
-    public FeedDetailResponse getFeedDetail(@PathVariable("feed-id") Integer feedId) {
+    public QueryFeedDetailResponse getFeedDetail(@PathVariable("feed-id") Integer feedId) {
         return queryFeedDetailService.execute(feedId);
     }
 

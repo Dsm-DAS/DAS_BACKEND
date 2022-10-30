@@ -44,4 +44,8 @@ public class Notice extends BaseTimeIdEntity {
         this.content = content;
     }
 
+    public void addViews() {
+        this.views += 1;
+    }
+
 }

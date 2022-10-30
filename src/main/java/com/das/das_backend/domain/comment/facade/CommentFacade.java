@@ -4,7 +4,7 @@ import com.das.das_backend.domain.comment.domain.Comment;
 import com.das.das_backend.domain.comment.domain.repository.CommentRepository;
 import com.das.das_backend.domain.comment.exception.CommentNotFoundException;
 import com.das.das_backend.domain.feed.domain.Feed;
-import com.das.das_backend.domain.feed.presentation.dto.response.FeedDetailResponse.CommentResponse;
+import com.das.das_backend.domain.feed.presentation.dto.response.QueryFeedDetailResponse.CommentResponse;
 import com.das.das_backend.domain.user.presentation.dto.response.WriterResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
