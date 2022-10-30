@@ -1,7 +1,6 @@
 package com.das.das_backend.domain.notice.service;
 
 import com.das.das_backend.domain.notice.domain.Notice;
-import com.das.das_backend.domain.notice.domain.repository.NoticeRepository;
 import com.das.das_backend.domain.notice.facade.NoticeFacade;
 import com.das.das_backend.domain.notice.presentation.dto.response.QueryNoticeDetailResponse;
 import com.das.das_backend.domain.user.presentation.dto.response.WriterResponse;
@@ -13,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class QueryNoticeDetailService {
 
-    private final NoticeRepository noticeRepository;
     private final NoticeFacade noticeFacade;
 
     @Transactional
