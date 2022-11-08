@@ -2,6 +2,7 @@ package com.das.das_backend.domain.club.domain;
 
 import com.das.das_backend.domain.club.domain.types.ClubCategory;
 import com.das.das_backend.domain.club.domain.types.ClubType;
+import com.das.das_backend.domain.user.domain.User;
 import com.das.das_backend.global.entity.BaseIdEntity;
 import com.das.das_backend.infrastructure.s3.DefaultImage;
 import lombok.AccessLevel;
@@ -13,8 +14,11 @@ import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -45,6 +49,9 @@ public class Club extends BaseIdEntity {
     @ColumnDefault(DefaultImage.CLUB_PROFILE_IMAGE)
     @Column(nullable = false)
     private String clubImageUrl;
+
+    @OneToMany(mappedBy = "club")
+    private List<User> userList;
 
     @Builder
     public Club(String clubName, String clubIntroduce, ClubCategory clubCategory, ClubType clubType,
