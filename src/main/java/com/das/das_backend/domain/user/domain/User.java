@@ -1,5 +1,6 @@
 package com.das.das_backend.domain.user.domain;
 
+import com.das.das_backend.domain.club.domain.Club;
 import com.das.das_backend.global.entity.BaseIdEntity;
 import com.das.das_backend.global.enums.Authority;
 import com.das.das_backend.global.enums.Sex;
@@ -11,10 +12,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -68,9 +66,13 @@ public class User extends BaseIdEntity {
     @NotNull
     private Integer viewCounts;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "club_id", nullable = false)
+    private Club club;
+
     @Builder
     public User(String email, String password, String name, Integer grade, Integer classNum,
-                Integer number, Authority authority, Sex sex, String profileImageUrl, String introduce, Integer viewCounts) {
+                Integer number, Authority authority, Sex sex, String profileImageUrl, String introduce, Integer viewCounts, Club club) {
         this.email = email;
         this.password = password;
         this.name = name;
@@ -82,6 +84,7 @@ public class User extends BaseIdEntity {
         this.profileImageUrl = profileImageUrl;
         this.introduce = introduce;
         this.viewCounts = viewCounts;
+        this.club = club;
     }
 
     public void changePassword(String password) {
