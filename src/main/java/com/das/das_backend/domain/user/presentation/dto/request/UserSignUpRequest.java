@@ -1,5 +1,6 @@
 package com.das.das_backend.domain.user.presentation.dto.request;
 
+import com.das.das_backend.global.enums.Major;
 import com.das.das_backend.global.enums.Sex;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,5 +34,8 @@ public class UserSignUpRequest {
 
     @NotNull
     private Sex sex;
+
+    @NotNull
+    private Major major;
 
 }
