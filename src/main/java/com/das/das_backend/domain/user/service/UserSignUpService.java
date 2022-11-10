@@ -37,6 +37,7 @@ public class UserSignUpService {
                 .grade(request.getGrade())
                 .classNum(request.getClassNum())
                 .number(request.getNumber())
+                .major(request.getMajor())
                 .viewCounts(0)
                 .build());
     }

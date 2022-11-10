@@ -3,6 +3,7 @@ package com.das.das_backend.domain.user.domain;
 import com.das.das_backend.domain.club.domain.Club;
 import com.das.das_backend.global.entity.BaseIdEntity;
 import com.das.das_backend.global.enums.Authority;
+import com.das.das_backend.global.enums.Major;
 import com.das.das_backend.global.enums.Sex;
 import com.das.das_backend.infrastructure.s3.DefaultImage;
 import lombok.AccessLevel;
@@ -49,12 +50,19 @@ public class User extends BaseIdEntity {
     private Integer number;
 
     @NotNull
+    private Integer viewCounts;
+
+    @NotNull
     @Enumerated(EnumType.STRING)
     private Authority authority;
 
     @NotNull
     @Enumerated(EnumType.STRING)
     private Sex sex;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private Major major;
 
     @ColumnDefault(DefaultImage.USER_PROFILE_IMAGE)
     @Column(nullable = false)
@@ -63,27 +71,29 @@ public class User extends BaseIdEntity {
     @Size(max = 50)
     private String introduce;
 
-    @NotNull
-    private Integer viewCounts;
+    @Size(max = 20)
+    private String mySkill;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "club_id", nullable = false)
+    @JoinColumn(name = "club_id")
     private Club club;
 
     @Builder
-    public User(String email, String password, String name, Integer grade, Integer classNum,
-                Integer number, Authority authority, Sex sex, String profileImageUrl, String introduce, Integer viewCounts, Club club) {
+    public User(String email, String password, String name, Integer grade, Integer classNum, Integer number, Integer viewCounts,
+                Authority authority, Sex sex, Major major, String profileImageUrl, String introduce, String mySkill, Club club) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.grade = grade;
         this.classNum = classNum;
         this.number = number;
+        this.viewCounts = viewCounts;
         this.authority = authority;
         this.sex = sex;
+        this.major = major;
         this.profileImageUrl = profileImageUrl;
         this.introduce = introduce;
-        this.viewCounts = viewCounts;
+        this.mySkill = mySkill;
         this.club = club;
     }
 
