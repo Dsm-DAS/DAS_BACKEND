@@ -4,7 +4,6 @@ import com.das.das_backend.domain.user.domain.AuthCode;
 import com.das.das_backend.domain.user.domain.repository.AuthCodeRepository;
 import com.das.das_backend.domain.user.exception.InvalidAuthCodeException;
 import com.das.das_backend.domain.user.exception.UnVerifiedAuthCodeException;
-import com.das.das_backend.domain.user.exception.WrongEmailException;
 import com.das.das_backend.global.util.jms.JmsProperties;
 import com.das.das_backend.global.util.jms.JmsUtil;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +24,7 @@ public class AuthCodeFacade {
     }
 
     public void isVerify(String email) {
-        if(getAuthCodeById(email).isVerify()) {
+        if (getAuthCodeById(email).isVerify()) {
             throw UnVerifiedAuthCodeException.EXCEPTION;
         }
     }
