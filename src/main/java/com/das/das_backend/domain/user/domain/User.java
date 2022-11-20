@@ -60,13 +60,12 @@ public class User extends BaseIdEntity {
     @Enumerated(EnumType.STRING)
     private Sex sex;
 
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    private Major major;
-
     @ColumnDefault(DefaultImage.USER_PROFILE_IMAGE)
     @Column(nullable = false)
     private String profileImageUrl;
+
+    @Enumerated(EnumType.STRING)
+    private Major major;
 
     @Size(max = 50)
     private String introduce;
@@ -79,8 +78,8 @@ public class User extends BaseIdEntity {
     private Club club;
 
     @Builder
-    public User(String email, String password, String name, Integer grade, Integer classNum, Integer number, Integer viewCounts,
-                Authority authority, Sex sex, Major major, String profileImageUrl, String introduce, String mySkill, Club club) {
+    public User(String email, String password, String name, Integer grade, Integer classNum, Integer number,
+                Integer viewCounts, Authority authority, Sex sex, String profileImageUrl) {
         this.email = email;
         this.password = password;
         this.name = name;
@@ -90,11 +89,7 @@ public class User extends BaseIdEntity {
         this.viewCounts = viewCounts;
         this.authority = authority;
         this.sex = sex;
-        this.major = major;
         this.profileImageUrl = profileImageUrl;
-        this.introduce = introduce;
-        this.mySkill = mySkill;
-        this.club = club;
     }
 
     public void changePassword(String password) {
