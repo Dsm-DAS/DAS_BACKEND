@@ -35,7 +35,6 @@ jwt:
   header: ${HEADER}
   prefix: ${PREFIX}
 
-
 redis:
   host: ${REDIS_HOST}
   port: ${REDIS_PORT}

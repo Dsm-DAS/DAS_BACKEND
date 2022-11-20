@@ -31,13 +31,12 @@ public class UserSignUpService {
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .name(request.getName())
-                .authority(Authority.USER)
                 .sex(request.getSex())
-                .profileImageUrl(DefaultImage.USER_PROFILE_IMAGE)
                 .grade(request.getGrade())
                 .classNum(request.getClassNum())
                 .number(request.getNumber())
-                .major(request.getMajor())
+                .authority(Authority.USER)
+                .profileImageUrl(DefaultImage.USER_PROFILE_IMAGE)
                 .viewCounts(0)
                 .build());
     }
