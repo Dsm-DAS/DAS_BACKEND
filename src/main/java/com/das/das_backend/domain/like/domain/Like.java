@@ -3,8 +3,6 @@ package com.das.das_backend.domain.like.domain;
 
 import com.das.das_backend.domain.feed.domain.Feed;
 import com.das.das_backend.domain.user.domain.User;
-import com.das.das_backend.global.entity.BaseIdEntity;
-import com.das.das_backend.global.entity.BaseTimeIdEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,7 +14,12 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "tbl_feed_like")
 @Entity
-public class Like extends BaseIdEntity {
+public class Like {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "tbl_feed_like_id")
+    private Integer id;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)

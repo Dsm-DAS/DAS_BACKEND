@@ -1,7 +1,7 @@
 package com.das.das_backend.domain.notice.domain;
 
 import com.das.das_backend.domain.user.domain.User;
-import com.das.das_backend.global.entity.BaseTimeIdEntity;
+import com.das.das_backend.global.entity.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,7 +14,12 @@ import javax.validation.constraints.Size;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Notice extends BaseTimeIdEntity {
+public class Notice extends BaseTimeEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "notice_id")
+    private Integer id;
 
     @NotNull
     @Size(max = 20)
