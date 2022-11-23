@@ -1,6 +1,6 @@
 FROM openjdk:11-jre-slim
 
-ADD build/libs/*.jar app.jar
+COPY build/libs/*.jar app.jar
 
 ARG S3_ACCESS_KEY
 ENV S3_ACCESS_KEY ${S3_ACCESS_KEY}
