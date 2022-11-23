@@ -1,7 +1,6 @@
 package com.das.das_backend.domain.user.domain;
 
 import com.das.das_backend.domain.club.domain.Club;
-import com.das.das_backend.global.entity.BaseIdEntity;
 import com.das.das_backend.global.enums.Authority;
 import com.das.das_backend.global.enums.Major;
 import com.das.das_backend.global.enums.Sex;
@@ -22,7 +21,11 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
 @Entity
-public class User extends BaseIdEntity {
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @NotNull
     @Size(max = 64)

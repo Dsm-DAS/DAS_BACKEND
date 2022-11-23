@@ -3,7 +3,6 @@ package com.das.das_backend.domain.club.domain;
 import com.das.das_backend.domain.club.domain.types.ClubCategory;
 import com.das.das_backend.domain.club.domain.types.ClubType;
 import com.das.das_backend.domain.user.domain.User;
-import com.das.das_backend.global.entity.BaseIdEntity;
 import com.das.das_backend.infrastructure.s3.DefaultImage;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -12,9 +11,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -23,7 +20,11 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
 @Entity
-public class Club extends BaseIdEntity {
+public class Club {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @NotNull
     @Size(max = 20)
