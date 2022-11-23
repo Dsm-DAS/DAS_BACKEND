@@ -18,7 +18,6 @@ public class Notice extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "notice_id")
     private Integer id;
 
     @NotNull

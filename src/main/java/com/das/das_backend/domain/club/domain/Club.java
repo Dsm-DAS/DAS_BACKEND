@@ -24,7 +24,6 @@ public class Club {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "club_id")
     private Integer id;
 
     @NotNull

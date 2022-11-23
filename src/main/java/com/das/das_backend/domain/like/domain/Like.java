@@ -18,7 +18,6 @@ public class Like {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tbl_feed_like_id")
     private Integer id;
     
     @ManyToOne(fetch = FetchType.LAZY)
