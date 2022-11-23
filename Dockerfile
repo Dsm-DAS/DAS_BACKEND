@@ -8,6 +8,4 @@ ENV S3_SECRET_KEY ${S3_SECRET_KEY}
 
 EXPOSE 8080
 
-COPY build/libs/*.jar app.jar
-
-ENTRYPOINT ["java","-jar","/app.jar"] 
+ENTRYPOINT ["java","-jar","/app.jar"]
