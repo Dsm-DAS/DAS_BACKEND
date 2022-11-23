@@ -1,7 +1,6 @@
 package com.das.das_backend.domain.feed.service;
 
 import com.das.das_backend.domain.feed.domain.repository.FeedRepository;
-import com.das.das_backend.domain.feed.facade.FeedFacade;
 import com.das.das_backend.domain.feed.presentation.dto.response.QueryFeedListResponse;
 import com.das.das_backend.domain.feed.presentation.dto.response.QueryFeedListResponse.FeedResponse;
 import com.das.das_backend.domain.user.presentation.dto.response.WriterResponse;
@@ -17,7 +16,6 @@ import java.util.stream.Collectors;
 public class QueryFeedListService {
 
     private final FeedRepository feedRepository;
-    private final FeedFacade feedFacade;
 
     @Transactional(readOnly = true)
     public QueryFeedListResponse execute() {
