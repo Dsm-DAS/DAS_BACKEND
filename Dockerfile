@@ -6,6 +6,8 @@ ENV S3_ACCESS_KEY ${S3_ACCESS_KEY}
 ARG S3_SECRET_KEY
 ENV S3_SECRET_KEY ${S3_SECRET_KEY}
 
+ADD build/libs/*.jar /app.jar
+
 EXPOSE 8080
 
 ENTRYPOINT ["java","-jar","/app.jar"]
