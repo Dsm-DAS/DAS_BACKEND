@@ -32,6 +32,11 @@ public class UserFacade {
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
     }
 
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
+    }
+
     public WriterResponse getWriter(User writer) {
         return WriterResponse.builder()
                 .userId(writer.getId())
