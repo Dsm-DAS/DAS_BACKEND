@@ -1,7 +1,7 @@
 package com.das.das_backend.domain.like.service;
 
-import com.das.das_backend.domain.feed.domain.Feed;
-import com.das.das_backend.domain.feed.facade.FeedFacade;
+import com.das.das_backend.domain.club.domain.Club;
+import com.das.das_backend.domain.club.facade.ClubFacade;
 import com.das.das_backend.domain.like.domain.Like;
 import com.das.das_backend.domain.like.domain.repository.LikeRepository;
 import com.das.das_backend.domain.like.exception.LikeExistException;
@@ -20,53 +20,53 @@ public class LikeService {
 
     private final LikeRepository likeRepository;
     private final UserFacade userFacade;
-    private final FeedFacade feedFacade;
+    private final ClubFacade clubFacade;
     private final LikeFacade likeFacade;
 
     @Transactional
-    public LikeResponse liked(Integer feedId) {
+    public LikeResponse liked(Integer clubId) {
         User user = userFacade.getCurrentUser();
-        Feed feed = feedFacade.getFeedById(feedId);
+        Club club = clubFacade.getClub(clubId);
 
-        if (likeFacade.checkLiked(user, feed)) {
+        if (likeFacade.checkLiked(user, club)) {
             throw LikeExistException.EXCEPTION;
         }
 
-        feed.addLikeCount();
-        return addLike(user, feed);
+        club.addLikeCount();
+        return addLike(user, club);
     }
 
     @Transactional
-    public LikeResponse deleteLiked(Integer feedId) {
+    public LikeResponse deleteLiked(Integer clubId) {
         User user = userFacade.getCurrentUser();
-        Feed feed = feedFacade.getFeedById(feedId);
+        Club club = clubFacade.getClub(clubId);
 
-        if (!likeFacade.checkLiked(user, feed)) {
+        if (!likeFacade.checkLiked(user, club)) {
             throw RemoveLikeExistException.EXCEPTION;
         }
 
-        feed.subLikeCount();
-        return removeLike(user, feed);
+        club.subLikeCount();
+        return removeLike(user, club);
     }
 
-    private LikeResponse addLike(User user, Feed feed) {
+    private LikeResponse addLike(User user, Club club) {
         likeRepository.save(Like.builder()
                 .user(user)
-                .feed(feed)
+                .club(club)
                 .build());
 
         return LikeResponse.builder()
-                .likeCounts(feed.getLikeCounts())
-                .liked(likeFacade.checkLiked(user, feed))
+                .likeCounts(club.getLikeCounts())
+                .liked(likeFacade.checkLiked(user, club))
                 .build();
     }
 
-    private LikeResponse removeLike(User user, Feed feed) {
-        likeRepository.deleteByUserAndFeed(user, feed);
+    private LikeResponse removeLike(User user, Club club) {
+        likeRepository.deleteByUserAndClub(user, club);
 
         return LikeResponse.builder()
-                .likeCounts(feed.getLikeCounts())
-                .liked(likeFacade.checkLiked(user, feed))
+                .likeCounts(club.getLikeCounts())
+                .liked(likeFacade.checkLiked(user, club))
                 .build();
     }
 
