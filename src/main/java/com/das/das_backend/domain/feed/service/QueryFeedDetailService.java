@@ -35,8 +35,6 @@ public class QueryFeedDetailService {
                 .title(feed.getTitle())
                 .content(feed.getContent())
                 .dasUrl(feed.getDasUrl())
-                .createdAt(feed.getCreatedAt())
-                .updatedAt(feed.getUpdatedAt())
                 .views(feed.getViews())
                 .likeCounts(feed.getLikeCounts())
                 .liked(likeFacade.checkLiked(user, feed))

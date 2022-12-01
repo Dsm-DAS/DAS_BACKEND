@@ -2,7 +2,6 @@ package com.das.das_backend.domain.feed.domain;
 
 import com.das.das_backend.domain.comment.domain.Comment;
 import com.das.das_backend.domain.user.domain.User;
-import com.das.das_backend.global.entity.BaseTimeEntity;
 import com.das.das_backend.global.enums.Major;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -18,7 +17,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Feed extends BaseTimeEntity {
+public class Feed {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

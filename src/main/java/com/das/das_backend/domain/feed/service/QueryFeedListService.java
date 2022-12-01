@@ -30,7 +30,6 @@ public class QueryFeedListService {
                                 .build())
                         .feedId(feed.getId())
                         .title(feed.getTitle())
-                        .createdAt(feed.getCreatedAt())
                         .views(feed.getViews())
                         .likeCounts(feed.getLikeCounts())
                         .build())
