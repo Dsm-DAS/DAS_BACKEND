@@ -46,6 +46,9 @@ public class Club {
     @NotNull
     private Integer clubViews;
 
+    @NotNull
+    private Integer likeCounts;
+
     @ColumnDefault(DefaultImage.CLUB_PROFILE_IMAGE)
     @Column(nullable = false)
     private String clubImageUrl;
@@ -55,7 +58,7 @@ public class Club {
 
     @Builder
     public Club(String clubName, String clubIntroduce, ClubCategory clubCategory, ClubType clubType,
-                String clubUrl, Integer clubViews, String clubImageUrl) {
+                String clubUrl, Integer clubViews, String clubImageUrl, Integer likeCounts) {
         this.clubName = clubName;
         this.clubIntroduce = clubIntroduce;
         this.clubCategory = clubCategory;
@@ -63,6 +66,15 @@ public class Club {
         this.clubUrl = clubUrl;
         this.clubViews = clubViews;
         this.clubImageUrl = clubImageUrl;
+        this.likeCounts = likeCounts;
+    }
+
+    public void addLikeCount() {
+        this.likeCounts += 1;
+    }
+
+    public void subLikeCount() {
+        this.likeCounts -= 1;
     }
 
 }
