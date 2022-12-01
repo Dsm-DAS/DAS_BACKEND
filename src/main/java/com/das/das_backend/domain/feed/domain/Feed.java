@@ -3,6 +3,7 @@ package com.das.das_backend.domain.feed.domain;
 import com.das.das_backend.domain.comment.domain.Comment;
 import com.das.das_backend.domain.user.domain.User;
 import com.das.das_backend.global.entity.BaseTimeEntity;
+import com.das.das_backend.global.enums.Major;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -40,6 +42,13 @@ public class Feed extends BaseTimeEntity {
     @Column(nullable = false)
     private Integer likeCounts;
 
+    @Column(nullable = false)
+    private LocalDateTime endAt;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Major major;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -48,12 +57,15 @@ public class Feed extends BaseTimeEntity {
     private List<Comment> commentList;
 
     @Builder
-    public Feed(String title, String content, String dasUrl, Integer views, Integer likeCounts, User user) {
+    public Feed(String title, String content, String dasUrl, Integer views, Integer likeCounts,
+                LocalDateTime endAt, Major major, User user) {
         this.title = title;
         this.content = content;
         this.dasUrl = dasUrl;
         this.views = views;
         this.likeCounts = likeCounts;
+        this.endAt = endAt;
+        this.major = major;
         this.user = user;
     }
 

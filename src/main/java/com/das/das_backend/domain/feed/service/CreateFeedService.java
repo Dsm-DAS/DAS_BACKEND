@@ -6,6 +6,7 @@ import com.das.das_backend.domain.feed.presentation.dto.request.CreateFeedReques
 import com.das.das_backend.domain.user.domain.User;
 import com.das.das_backend.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.NaturalId;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +25,8 @@ public class CreateFeedService {
                 .title(request.getTitle())
                 .content(request.getContent())
                 .dasUrl(request.getDasUrl())
+                .major(request.getMajor())
+                .endAt(request.getEndAt())
                 .views(0)
                 .likeCounts(0)
                 .user(user)
