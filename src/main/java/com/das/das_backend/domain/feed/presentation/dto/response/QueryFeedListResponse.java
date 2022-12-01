@@ -22,7 +22,6 @@ public class QueryFeedListResponse {
         private final String title;
         private final LocalDateTime createdAt;
         private final Integer views;
-        private final Integer likeCounts;
     }
 
 }

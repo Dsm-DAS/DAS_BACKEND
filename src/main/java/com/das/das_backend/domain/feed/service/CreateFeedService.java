@@ -28,7 +28,6 @@ public class CreateFeedService {
                 .major(request.getMajor())
                 .endAt(request.getEndAt())
                 .views(0)
-                .likeCounts(0)
                 .user(user)
                 .build());
     }

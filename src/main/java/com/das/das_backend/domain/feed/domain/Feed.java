@@ -39,9 +39,6 @@ public class Feed {
     private Integer views;
 
     @Column(nullable = false)
-    private Integer likeCounts;
-
-    @Column(nullable = false)
     private LocalDateTime endAt;
 
     @Enumerated(EnumType.STRING)
@@ -56,13 +53,12 @@ public class Feed {
     private List<Comment> commentList;
 
     @Builder
-    public Feed(String title, String content, String dasUrl, Integer views, Integer likeCounts,
+    public Feed(String title, String content, String dasUrl, Integer views,
                 LocalDateTime endAt, Major major, User user) {
         this.title = title;
         this.content = content;
         this.dasUrl = dasUrl;
         this.views = views;
-        this.likeCounts = likeCounts;
         this.endAt = endAt;
         this.major = major;
         this.user = user;
@@ -72,14 +68,6 @@ public class Feed {
         this.title = title;
         this.content = content;
         this.dasUrl = dasUrl;
-    }
-
-    public void addLikeCount() {
-        this.likeCounts += 1;
-    }
-
-    public void subLikeCount() {
-        this.likeCounts -= 1;
     }
 
     public void addViews() {

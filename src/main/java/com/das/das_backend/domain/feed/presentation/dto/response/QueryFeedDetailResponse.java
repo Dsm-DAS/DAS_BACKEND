@@ -18,8 +18,6 @@ public class QueryFeedDetailResponse {
     private final LocalDateTime createdAt;
     private final LocalDateTime updatedAt;
     private final Integer views;
-    private final Integer likeCounts;
-    private final boolean liked;
     private final WriterResponse writer;
     private final List<CommentResponse> commentList;
 
