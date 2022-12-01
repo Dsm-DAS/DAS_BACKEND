@@ -5,6 +5,6 @@ public enum Authority {
     USER,
     ADMIN,
     TEACHER,
-    MANAGER
+    CLUB_MANAGER
 
 }
