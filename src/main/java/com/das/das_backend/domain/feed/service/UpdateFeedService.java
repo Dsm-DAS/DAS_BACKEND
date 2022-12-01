@@ -27,7 +27,8 @@ public class UpdateFeedService {
         }
 
         feed.modifyFeed(request.getTitle(),
-                request.getContent(), request.getDasUrl());
+                request.getContent(),
+                request.getDasUrl());
     }
 
 }
