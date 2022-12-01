@@ -17,9 +17,9 @@ public class QueryMyInfoResponse {
 
     private final Integer classNum;
 
-    private final String introduce;
-
     private final Integer number;
+
+    private final String introduce;
 
     private final String profileImageUrl;
 
