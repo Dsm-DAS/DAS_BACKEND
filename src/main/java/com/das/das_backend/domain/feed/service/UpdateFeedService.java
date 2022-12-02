@@ -28,7 +28,9 @@ public class UpdateFeedService {
 
         feed.modifyFeed(request.getTitle(),
                 request.getContent(),
-                request.getDasUrl());
+                request.getDasUrl(),
+                request.getMajor(),
+                request.getEndAt());
     }
 
 }
