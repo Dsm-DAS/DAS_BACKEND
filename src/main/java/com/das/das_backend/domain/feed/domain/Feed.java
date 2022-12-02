@@ -64,10 +64,12 @@ public class Feed {
         this.user = user;
     }
 
-    public void modifyFeed(String title, String content, String dasUrl) {
+    public void modifyFeed(String title, String content, String dasUrl, Major major, LocalDateTime endAt) {
         this.title = title;
         this.content = content;
         this.dasUrl = dasUrl;
+        this.major = major;
+        this.endAt = endAt;
     }
 
     public void addViews() {
