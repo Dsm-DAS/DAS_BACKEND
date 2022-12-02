@@ -31,7 +31,6 @@ public class QueryFeedListViewsService {
                         .feedId(feed.getId())
                         .title(feed.getTitle())
                         .views(feed.getViews())
-                        .likeCounts(feed.getLikeCounts())
                         .build())
                 .collect(Collectors.toList());
 

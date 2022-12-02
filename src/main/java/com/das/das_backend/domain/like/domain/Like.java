@@ -1,7 +1,7 @@
 package com.das.das_backend.domain.like.domain;
 
 
-import com.das.das_backend.domain.feed.domain.Feed;
+import com.das.das_backend.domain.club.domain.Club;
 import com.das.das_backend.domain.user.domain.User;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -19,20 +19,19 @@ public class Like {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "feed_id", nullable = false)
-    private Feed feed;
+    @JoinColumn(name = "club_id", nullable = false)
+    private Club club;
 
     @Builder
-    public Like(User user, Feed feed) {
+    public Like(User user, Club club) {
         this.user = user;
-        this.feed = feed;
+        this.club = club;
     }
 
 }
