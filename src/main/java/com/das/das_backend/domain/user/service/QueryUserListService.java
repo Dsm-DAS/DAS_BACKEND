@@ -20,7 +20,7 @@ public class QueryUserListService {
     @Transactional(readOnly = true)
     public QueryUserListResponse execute() {
 
-        List<UserResponse> userList = userRepository.findAllByOrderByOrderById()
+        List<UserResponse> userList = userRepository.findAllByOrderById()
                 .stream()
                 .map(user -> UserResponse.builder()
                         .userId(user.getId())

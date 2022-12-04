@@ -12,6 +12,6 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
     Optional<User> findById(Integer userId);
 
-    List<User> findAllByOrderByOrderById();
+    List<User> findAllByOrderById();
 
 }
