@@ -2,6 +2,7 @@ package com.das.das_backend.domain.user.presentation;
 
 import com.das.das_backend.domain.user.presentation.dto.request.*;
 import com.das.das_backend.domain.user.presentation.dto.response.QueryMyInfoResponse;
+import com.das.das_backend.domain.user.presentation.dto.response.QueryUserListResponse;
 import com.das.das_backend.domain.user.presentation.dto.response.TokenResponse;
 import com.das.das_backend.domain.user.service.*;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +27,7 @@ public class UserController {
     private final QueryMyInfoService queryMyInfoService;
     private final QueryUserInfoService queryUserInfoService;
     private final UpdateUserInfoService updateUserInfoService;
+    private final QueryUserListService queryUserListService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/email")
@@ -86,6 +88,11 @@ public class UserController {
     @PutMapping("/my-page")
     public void modifyInfo(@RequestBody @Valid UpdateUserInfoRequest request) {
         updateUserInfoService.execute(request);
+    }
+
+    @GetMapping
+    public QueryUserListResponse getUserList() {
+        return queryUserListService.execute();
     }
 
 }
