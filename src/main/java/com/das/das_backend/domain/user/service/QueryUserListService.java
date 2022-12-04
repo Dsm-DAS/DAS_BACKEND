@@ -27,6 +27,8 @@ public class QueryUserListService {
                         .name(user.getName())
                         .profileImageUrl(user.getProfileImageUrl())
                         .viewCounts(user.getViewCounts())
+                        .grade(user.getGrade())
+                        .classNum(user.getClassNum())
                         .build())
                 .collect(Collectors.toList());
 

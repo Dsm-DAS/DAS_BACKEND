@@ -19,6 +19,8 @@ public class QueryUserListResponse {
         public final String name;
         public final String profileImageUrl;
         public final Integer viewCounts;
+        public final Integer grade;
+        public final Integer classNum;
     }
 
 }
