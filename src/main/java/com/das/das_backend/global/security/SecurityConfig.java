@@ -70,9 +70,11 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.DELETE,"/comment/{comment-id}").authenticated()
 
                 // notice
-                .antMatchers(HttpMethod.POST, "/notice").hasAnyAuthority("TEACHER", "CLUB_MANAGER")
-                .antMatchers(HttpMethod.PATCH, "/notice/{notice-id}").hasAnyAuthority("TEACHER", "CLUB_MANAGER")
-                .antMatchers(HttpMethod.DELETE, "/notice/{notice-id}").hasAnyAuthority("TEACHER", "CLUB_MANAGER")
+                .antMatchers(HttpMethod.GET, "/notice").authenticated()
+                .antMatchers(HttpMethod.GET, "/notice/{notice-id}").authenticated()
+                .antMatchers(HttpMethod.POST, "/notice").hasAnyAuthority("TEACHER", "ADMIN")
+                .antMatchers(HttpMethod.PATCH, "/notice/{notice-id}").hasAnyAuthority("TEACHER", "ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/notice/{notice-id}").hasAnyAuthority("TEACHER", "ADMIN")
 
                 // teacher
                 .antMatchers(HttpMethod.PUT, "/teacher").hasAnyAuthority("TEACHER", "CLUB_MANAGER")
