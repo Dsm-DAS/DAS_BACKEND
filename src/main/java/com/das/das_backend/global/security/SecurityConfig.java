@@ -38,6 +38,7 @@ public class SecurityConfig {
                 // user
                 .antMatchers(HttpMethod.GET, "/user/my-page").authenticated()
                 .antMatchers(HttpMethod.GET, "/user/{user-id}").authenticated()
+                .antMatchers(HttpMethod.GET, "/user").authenticated()
                 .antMatchers(HttpMethod.POST, "/user/email").permitAll()
                 .antMatchers(HttpMethod.POST, "/user/signup").permitAll()
                 .antMatchers(HttpMethod.POST,"/user/token").permitAll()
@@ -56,18 +57,27 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.PATCH, "/feed/{feed-id}").authenticated()
                 .antMatchers(HttpMethod.DELETE, "/feed/{feed-id}").authenticated()
 
+                //club
+                .antMatchers(HttpMethod.POST, "/club").hasAnyAuthority("TEACHER", "CLUB_MANAGER", "ADMIN")
+                .antMatchers(HttpMethod.PATCH, "/club/{club-id}").hasAnyAuthority("TEACHER", "CLUB_MANAGER", "ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/club/{club-id}").hasAnyAuthority("TEACHER", "CLUB_MANAGER", "ADMIN")
+                .antMatchers(HttpMethod.GET, "/club/lists").authenticated()
+                .antMatchers(HttpMethod.GET, "/club/{club-id}").authenticated()
+
                 // comment
                 .antMatchers(HttpMethod.POST, "/comment/{feed-id}").authenticated()
                 .antMatchers(HttpMethod.PATCH, "/comment/{comment-id}").authenticated()
                 .antMatchers(HttpMethod.DELETE,"/comment/{comment-id}").authenticated()
 
                 // notice
-                .antMatchers(HttpMethod.POST, "/notice").hasAnyAuthority("TEACHER", "MANAGER")
-                .antMatchers(HttpMethod.PATCH, "/notice/{notice-id}").hasAnyAuthority("TEACHER", "MANAGER")
-                .antMatchers(HttpMethod.DELETE, "/notice/{notice-id}").hasAnyAuthority("TEACHER", "MANAGER")
+                .antMatchers(HttpMethod.GET, "/notice").authenticated()
+                .antMatchers(HttpMethod.GET, "/notice/{notice-id}").authenticated()
+                .antMatchers(HttpMethod.POST, "/notice").hasAnyAuthority("TEACHER", "ADMIN")
+                .antMatchers(HttpMethod.PATCH, "/notice/{notice-id}").hasAnyAuthority("TEACHER", "ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/notice/{notice-id}").hasAnyAuthority("TEACHER", "ADMIN")
 
                 // teacher
-                .antMatchers(HttpMethod.PUT, "/teacher").hasAnyAuthority("TEACHER", "MANAGER")
+                .antMatchers(HttpMethod.PUT, "/teacher").hasAnyAuthority("TEACHER", "ADMIN")
                 .anyRequest().denyAll()
 
                 .and()
