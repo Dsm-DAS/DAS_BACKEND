@@ -1,14 +1,12 @@
 package com.das.das_backend.domain.user.domain;
 
 import com.das.das_backend.domain.club.domain.Club;
+import com.das.das_backend.domain.user.domain.types.LinkInfo;
 import com.das.das_backend.global.enums.Authority;
 import com.das.das_backend.global.enums.Major;
 import com.das.das_backend.global.enums.Sex;
 import com.das.das_backend.infrastructure.s3.DefaultImage;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 
@@ -72,6 +70,10 @@ public class User {
 
     @Size(max = 50)
     private String introduce;
+
+    @Setter
+    @Embedded
+    private LinkInfo linkInfo;
 
     @Size(max = 20)
     private String mySkill;
