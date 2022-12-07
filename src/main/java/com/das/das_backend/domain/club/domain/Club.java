@@ -35,9 +35,11 @@ public class Club {
     private String clubIntroduce;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     private ClubCategory clubCategory;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     private ClubType clubType;
 
     @NotNull
