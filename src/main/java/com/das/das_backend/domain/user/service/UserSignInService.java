@@ -6,11 +6,14 @@ import com.das.das_backend.domain.user.exception.PasswordMisMatchException;
 import com.das.das_backend.domain.user.exception.UserNotFoundException;
 import com.das.das_backend.domain.user.presentation.dto.request.UserSignInRequest;
 import com.das.das_backend.domain.user.presentation.dto.response.TokenResponse;
+import com.das.das_backend.global.security.jwt.JwtProperties;
 import com.das.das_backend.global.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
 @Service
@@ -19,6 +22,7 @@ public class UserSignInService {
     private final UserRepository userRepository;
     private final JwtTokenProvider jwtTokenProvider;
     private final PasswordEncoder passwordEncoder;
+    private final JwtProperties jwtProperties;
 
     @Transactional
     public TokenResponse execute(UserSignInRequest request) {
@@ -35,6 +39,8 @@ public class UserSignInService {
         return TokenResponse.builder()
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)
+                .authority(user.getAuthority())
+                .expiredAt(LocalDateTime.now().plusSeconds(jwtProperties.getAccessExp()))
                 .build();
     }
 
