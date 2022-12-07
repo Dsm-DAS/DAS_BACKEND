@@ -4,10 +4,8 @@ package com.das.das_backend.domain.notice.presentation;
 import com.das.das_backend.domain.notice.presentation.dto.request.CreateNoticeRequest;
 import com.das.das_backend.domain.notice.presentation.dto.request.UpdateNoticeRequest;
 import com.das.das_backend.domain.notice.presentation.dto.response.QueryNoticeDetailResponse;
-import com.das.das_backend.domain.notice.service.CreateNoticeService;
-import com.das.das_backend.domain.notice.service.DeleteNoticeService;
-import com.das.das_backend.domain.notice.service.QueryNoticeDetailService;
-import com.das.das_backend.domain.notice.service.UpdateNoticeService;
+import com.das.das_backend.domain.notice.presentation.dto.response.QueryNoticeListResponse;
+import com.das.das_backend.domain.notice.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +20,7 @@ public class NoticeController {
     private final CreateNoticeService createNoticeService;
     private final UpdateNoticeService updateNoticeService;
     private final DeleteNoticeService deleteNoticeService;
+    private final QueryNoticeListService queryNoticeListService;
     private final QueryNoticeDetailService queryNoticeDetailService;
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -41,6 +40,11 @@ public class NoticeController {
     @DeleteMapping("/{notice-id}")
     public void deleteNotice(@PathVariable(name = "notice-id") Integer noticeId) {
         deleteNoticeService.execute(noticeId);
+    }
+
+    @GetMapping
+    public QueryNoticeListResponse getNoticeList() {
+        return queryNoticeListService.execute();
     }
 
     @GetMapping("/{notice-id}")
