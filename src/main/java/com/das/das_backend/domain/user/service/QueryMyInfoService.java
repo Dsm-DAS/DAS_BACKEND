@@ -27,6 +27,11 @@ public class QueryMyInfoService {
                 .introduce(user.getIntroduce())
                 .profileImageUrl(user.getProfileImageUrl())
                 .viewCounts(user.getViewCounts())
+                .major(user.getMajor())
+                .linkInfo(user.getLinkInfo())
+                .sex(user.getSex())
+                .region(user.getRegion())
+                .club(user.getClub())
                 .build();
     }
 
