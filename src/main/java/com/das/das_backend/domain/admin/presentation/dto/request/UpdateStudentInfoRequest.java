@@ -1,4 +1,4 @@
-package com.das.das_backend.domain.teacher.presentation.dto.request;
+package com.das.das_backend.domain.admin.presentation.dto.request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
