@@ -20,7 +20,7 @@ public class QueryFeedListService {
     @Transactional(readOnly = true)
     public QueryFeedListResponse execute() {
 
-        List<FeedResponse> feedList = feedRepository.findAll()
+        List<FeedResponse> feedList = feedRepository.findAllByOrderByCreatedAtDesc()
                 .stream()
                 .map(feed -> FeedResponse.builder()
                         .writer(WriterResponse.builder()

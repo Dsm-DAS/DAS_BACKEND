@@ -9,6 +9,6 @@ public interface FeedRepository extends CrudRepository<Feed, Integer> {
     
     List<Feed> findAllByOrderByViewsDesc();
 
-    List<Feed> findAll();
+    List<Feed> findAllByOrderByCreatedAtDesc();
 
 }
