@@ -62,15 +62,11 @@ public class JwtTokenProvider {
     }
 
     public String parseToken(String bearerToken) {
-        if(bearerToken != null && bearerToken.startsWith(jwtProperties.getPrefix())
+        if (bearerToken != null && bearerToken.startsWith(jwtProperties.getPrefix())
                 && bearerToken.length() > 7)
             return bearerToken.substring(7);
 
         return null;
-    }
-
-    public boolean isRefresh(String token) {
-        return getBody(token).get("type").equals("refresh");
     }
 
     private Claims getBody(String token) {

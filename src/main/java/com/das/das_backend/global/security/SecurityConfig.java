@@ -41,18 +41,18 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.GET, "/user").authenticated()
                 .antMatchers(HttpMethod.POST, "/user/email").permitAll()
                 .antMatchers(HttpMethod.POST, "/user/signup").permitAll()
-                .antMatchers(HttpMethod.POST,"/user/token").permitAll()
+                .antMatchers(HttpMethod.POST, "/user/token").permitAll()
                 .antMatchers(HttpMethod.PUT, "/user/email").permitAll()
                 .antMatchers(HttpMethod.PUT, "/user/my-page").authenticated()
                 .antMatchers(HttpMethod.PATCH, "/user/token").permitAll()
-                .antMatchers(HttpMethod.PATCH,"/user/password").authenticated()
+                .antMatchers(HttpMethod.PATCH, "/user/password").authenticated()
                 .antMatchers(HttpMethod.DELETE, "/user/logout").authenticated()
                 .antMatchers(HttpMethod.DELETE, "/user").authenticated()
 
                 // feed
                 .antMatchers(HttpMethod.GET, "/feed").authenticated()
-                .antMatchers(HttpMethod.GET,"/feed/lists").authenticated()
-                .antMatchers(HttpMethod.GET,"/feed/{feed-id}").authenticated()
+                .antMatchers(HttpMethod.GET, "/feed/lists").authenticated()
+                .antMatchers(HttpMethod.GET, "/feed/{feed-id}").authenticated()
                 .antMatchers(HttpMethod.POST, "/feed").authenticated()
                 .antMatchers(HttpMethod.PATCH, "/feed/{feed-id}").authenticated()
                 .antMatchers(HttpMethod.DELETE, "/feed/{feed-id}").authenticated()
@@ -67,7 +67,7 @@ public class SecurityConfig {
                 // comment
                 .antMatchers(HttpMethod.POST, "/comment/{feed-id}").authenticated()
                 .antMatchers(HttpMethod.PATCH, "/comment/{comment-id}").authenticated()
-                .antMatchers(HttpMethod.DELETE,"/comment/{comment-id}").authenticated()
+                .antMatchers(HttpMethod.DELETE, "/comment/{comment-id}").authenticated()
 
                 // notice
                 .antMatchers(HttpMethod.GET, "/notice").authenticated()
@@ -76,8 +76,8 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.PATCH, "/notice/{notice-id}").hasAnyAuthority("TEACHER", "ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/notice/{notice-id}").hasAnyAuthority("TEACHER", "ADMIN")
 
-                // teacher
-                .antMatchers(HttpMethod.PUT, "/teacher").hasAnyAuthority("TEACHER", "ADMIN")
+                // admin
+                .antMatchers(HttpMethod.PUT, "/admin").hasAnyAuthority("ADMIN")
                 .anyRequest().denyAll()
 
                 .and()

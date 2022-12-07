@@ -107,7 +107,7 @@ public class User {
         this.profileImageUrl = profileImageUrl;
     }
 
-    public void teacherModifyUser(String name, Integer grade, Integer classNum, Integer number) {
+    public void adminModifyUser(String name, Integer grade, Integer classNum, Integer number) {
         this.name = name;
         this.grade = grade;
         this.classNum = classNum;
