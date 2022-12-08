@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface NoticeRepository extends CrudRepository<Notice, Integer> {
 
-    List<Notice> findAll();
+    List<Notice> findAllByOrderByCreatedAtDesc();
+
 }

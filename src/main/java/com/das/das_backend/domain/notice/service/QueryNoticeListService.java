@@ -19,7 +19,7 @@ public class QueryNoticeListService {
     @Transactional
     public QueryNoticeListResponse execute() {
 
-        List<NoticeResponse> noticeResponseList = noticeRepository.findAll()
+        List<NoticeResponse> noticeResponseList = noticeRepository.findAllByOrderByCreatedAtDesc()
                 .stream()
                 .map(notice -> NoticeResponse
                         .builder()
