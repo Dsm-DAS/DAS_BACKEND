@@ -8,6 +8,6 @@ public class DefaultImage {
 
     public static final String USER_PROFILE_IMAGE = "'a'";
 
-    public static final String CLUB_PROFILE_IMAGE = "'b";
+    public static final String CLUB_PROFILE_IMAGE = "'b'";
 
 }
