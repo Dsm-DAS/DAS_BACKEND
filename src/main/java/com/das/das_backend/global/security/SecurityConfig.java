@@ -76,6 +76,9 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.PATCH, "/notice/{notice-id}").hasAnyAuthority("TEACHER", "ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/notice/{notice-id}").hasAnyAuthority("TEACHER", "ADMIN")
 
+                //image
+                .antMatchers(HttpMethod.POST, "/images").permitAll()
+
                 // admin
                 .antMatchers(HttpMethod.PUT, "/admin").hasAnyAuthority("ADMIN")
                 .anyRequest().denyAll()
