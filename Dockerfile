@@ -6,8 +6,8 @@ ENV S3_ACCESS_KEY ${S3_ACCESS_KEY}
 ARG S3_SECRET_KEY
 ENV S3_SECRET_KEY ${S3_SECRET_KEY}
 
-ADD build/libs/*.jar /app.jar
+ADD build/libs/DAS_Backend-0.0.1-SNAPSHOT.jar DAS_Backend-0.0.1-SNAPSHOT.jar
 
 EXPOSE 8080
 
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","DAS_Backend-0.0.1-SNAPSHOT.jar"]
