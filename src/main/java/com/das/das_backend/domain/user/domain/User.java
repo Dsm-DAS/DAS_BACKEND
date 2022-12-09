@@ -9,12 +9,10 @@ import com.das.das_backend.infrastructure.s3.DefaultImage;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
-import reactor.util.annotation.Nullable;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 
 @Getter
@@ -77,13 +75,14 @@ public class User {
     @Embedded
     private LinkInfo linkInfo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "club_id")
-    private Club club;
+    private String stack;
 
     @Size(max = 10)
     private String region;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "club_id")
+    private Club club;
 
     @Builder
     public User(String email, String password, String name, Integer grade, Integer classNum, Integer number,
