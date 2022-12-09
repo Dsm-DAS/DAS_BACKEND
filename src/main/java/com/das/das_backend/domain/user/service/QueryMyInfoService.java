@@ -28,6 +28,7 @@ public class QueryMyInfoService {
                 .profileImageUrl(user.getProfileImageUrl())
                 .viewCounts(user.getViewCounts())
                 .major(user.getMajor())
+                .stack(user.getStack())
                 .linkInfo(user.getLinkInfo())
                 .sex(user.getSex())
                 .region(user.getRegion())

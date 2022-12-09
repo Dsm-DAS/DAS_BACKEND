@@ -21,14 +21,20 @@ public class QueryUserInfoService {
 
         return QueryMyInfoResponse.builder()
                 .userId(user.getId())
-                .name(user.getName())
                 .email(user.getEmail())
+                .name(user.getName())
                 .grade(user.getGrade())
                 .classNum(user.getClassNum())
-                .introduce(user.getIntroduce())
                 .number(user.getNumber())
+                .introduce(user.getIntroduce())
                 .profileImageUrl(user.getProfileImageUrl())
                 .viewCounts(user.getViewCounts())
+                .major(user.getMajor())
+                .stack(user.getStack())
+                .linkInfo(user.getLinkInfo())
+                .sex(user.getSex())
+                .region(user.getRegion())
+                .club(user.getClub())
                 .build();
     }
 
