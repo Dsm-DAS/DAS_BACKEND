@@ -17,7 +17,7 @@ public class UpdateUserInfoService {
     public void execute(UpdateUserInfoRequest request) {
         User user = userFacade.getCurrentUser();
 
-        user.modifyInfo(request.getName(), request.getIntroduce(), request.getProfileImageUrl());
+        user.modifyInfo(request.getName(), request.getIntroduce(), request.getProfileImageUrl(), request.getMajor(), request.getRegion(), request.getLinkInfo());
     }
 
 }

@@ -107,10 +107,13 @@ public class User {
         this.password = password;
     }
 
-    public void modifyInfo(String name, String introduce, String profileImageUrl) {
+    public void modifyInfo(String name, String introduce, String profileImageUrl, Major major, String region, LinkInfo linkInfo) {
         this.name = name;
         this.introduce = introduce;
         this.profileImageUrl = profileImageUrl;
+        this.major = major;
+        this.region = region;
+        this.linkInfo = linkInfo;
     }
 
     public void adminModifyUser(String name, Integer grade, Integer classNum, Integer number) {

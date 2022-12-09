@@ -1,5 +1,7 @@
 package com.das.das_backend.domain.user.presentation.dto.request;
 
+import com.das.das_backend.domain.user.domain.types.LinkInfo;
+import com.das.das_backend.global.enums.Major;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -20,4 +22,12 @@ public class UpdateUserInfoRequest {
 
     @NotBlank
     private String profileImageUrl;
+
+    private Major major;
+
+    @Size(max = 10)
+    private String region;
+
+    private LinkInfo linkInfo;
+
 }
