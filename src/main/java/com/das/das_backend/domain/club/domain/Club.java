@@ -28,6 +28,7 @@ public class Club {
 
     @NotNull
     @Size(max = 20)
+    @Column(unique = true)
     private String clubName;
 
     @NotNull
