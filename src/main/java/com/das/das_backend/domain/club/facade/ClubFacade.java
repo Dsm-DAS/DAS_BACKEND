@@ -17,4 +17,8 @@ public class ClubFacade {
                 .orElseThrow(() -> ClubNotFoundException.EXCEPTION);
     }
 
+    public boolean isAlreadyClubName(String clubName) {
+        return clubRepository.findByClubName(clubName).isPresent();
+    }
+
 }
