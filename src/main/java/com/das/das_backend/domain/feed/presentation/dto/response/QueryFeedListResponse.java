@@ -1,10 +1,12 @@
 package com.das.das_backend.domain.feed.presentation.dto.response;
 
 import com.das.das_backend.domain.user.presentation.dto.response.WriterResponse;
+import com.das.das_backend.global.enums.Major;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -22,6 +24,8 @@ public class QueryFeedListResponse {
         private final String title;
         private final LocalDateTime createdAt;
         private final Integer views;
+        private final Major major;
+        private final LocalDate endAt;
     }
 
 }

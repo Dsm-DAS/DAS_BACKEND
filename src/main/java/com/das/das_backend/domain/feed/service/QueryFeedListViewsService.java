@@ -31,6 +31,8 @@ public class QueryFeedListViewsService {
                         .feedId(feed.getId())
                         .title(feed.getTitle())
                         .views(feed.getViews())
+                        .major(feed.getMajor())
+                        .endAt(feed.getEndAt())
                         .build())
                 .collect(Collectors.toList());
 
