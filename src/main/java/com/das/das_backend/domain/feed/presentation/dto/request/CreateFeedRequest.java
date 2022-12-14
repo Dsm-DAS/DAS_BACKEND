@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @NoArgsConstructor
@@ -29,6 +29,6 @@ public class CreateFeedRequest {
     private Major major;
 
     @NotNull
-    private LocalDateTime endAt;
+    private LocalDate endAt;
 
 }

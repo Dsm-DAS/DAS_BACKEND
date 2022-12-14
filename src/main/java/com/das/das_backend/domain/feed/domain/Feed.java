@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class Feed extends BaseTimeEntity {
     private Integer views;
 
     @Column(nullable = false)
-    private LocalDateTime endAt;
+    private LocalDate endAt;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -55,7 +56,7 @@ public class Feed extends BaseTimeEntity {
 
     @Builder
     public Feed(String title, String content, String dasUrl, Integer views,
-                LocalDateTime endAt, Major major, User user) {
+                LocalDate endAt, Major major, User user) {
         this.title = title;
         this.content = content;
         this.dasUrl = dasUrl;
@@ -65,7 +66,7 @@ public class Feed extends BaseTimeEntity {
         this.user = user;
     }
 
-    public void modifyFeed(String title, String content, String dasUrl, Major major, LocalDateTime endAt) {
+    public void modifyFeed(String title, String content, String dasUrl, Major major, LocalDate endAt) {
         this.title = title;
         this.content = content;
         this.dasUrl = dasUrl;
