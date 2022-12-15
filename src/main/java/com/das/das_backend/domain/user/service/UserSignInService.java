@@ -41,6 +41,7 @@ public class UserSignInService {
                 .refreshToken(refreshToken)
                 .authority(user.getAuthority())
                 .expiredAt(LocalDateTime.now().plusSeconds(jwtProperties.getAccessExp()))
+                .profileImageUrl(user.getProfileImageUrl())
                 .build();
     }
 

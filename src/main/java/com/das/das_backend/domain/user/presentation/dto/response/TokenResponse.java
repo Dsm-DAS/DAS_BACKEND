@@ -14,5 +14,6 @@ public class TokenResponse {
     private final String refreshToken;
     private final Authority authority;
     private final LocalDateTime expiredAt;
+    private final String profileImageUrl;
 
 }
