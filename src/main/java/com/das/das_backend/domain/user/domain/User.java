@@ -65,6 +65,7 @@ public class User {
     @Column(nullable = false)
     private String profileImageUrl;
 
+    @ColumnDefault("'NONE'")
     @Enumerated(EnumType.STRING)
     private Major major;
 
