@@ -18,6 +18,7 @@ public class QueryFeedDetailResponse {
     private final LocalDateTime createdAt;
     private final LocalDateTime updatedAt;
     private final Integer views;
+    private final boolean isMine;
     private final WriterResponse writer;
     private final List<CommentResponse> commentList;
 

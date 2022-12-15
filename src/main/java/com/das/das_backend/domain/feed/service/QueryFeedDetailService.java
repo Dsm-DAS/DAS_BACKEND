@@ -31,6 +31,7 @@ public class QueryFeedDetailService {
                 .content(feed.getContent())
                 .dasUrl(feed.getDasUrl())
                 .views(feed.getViews())
+                .isMine(userFacade.getCurrentUser().equals(writer))
                 .writer(userFacade.getWriter(writer))
                 .commentList(commentFacade.getComments(feed))
                 .build();
