@@ -15,12 +15,13 @@ public class QueryUserListResponse {
     @Getter
     @Builder
     public static class UserResponse {
-        public final Integer userId;
-        public final String name;
-        public final String profileImageUrl;
-        public final Integer viewCounts;
-        public final Integer grade;
-        public final Integer classNum;
+        private final Integer userId;
+        private final String name;
+        private final String profileImageUrl;
+        private final Integer viewCounts;
+        private final Integer grade;
+        private final Integer classNum;
+        private final String introduce;
     }
 
 }

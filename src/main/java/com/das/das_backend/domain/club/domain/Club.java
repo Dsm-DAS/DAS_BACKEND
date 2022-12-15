@@ -28,9 +28,9 @@ public class Club {
 
     @NotNull
     @Size(max = 20)
+    @Column(unique = true)
     private String clubName;
 
-    @NotNull
     @Size(max = 100)
     private String clubIntroduce;
 
@@ -42,7 +42,6 @@ public class Club {
     @Enumerated(EnumType.STRING)
     private ClubType clubType;
 
-    @NotNull
     private String clubUrl;
 
     @NotNull
@@ -59,13 +58,11 @@ public class Club {
     private List<User> userList;
 
     @Builder
-    public Club(String clubName, String clubIntroduce, ClubCategory clubCategory, ClubType clubType,
-                String clubUrl, Integer clubViews, String clubImageUrl, Integer likeCounts) {
+    public Club(String clubName, ClubCategory clubCategory, ClubType clubType,
+                Integer clubViews, String clubImageUrl, Integer likeCounts) {
         this.clubName = clubName;
-        this.clubIntroduce = clubIntroduce;
         this.clubCategory = clubCategory;
         this.clubType = clubType;
-        this.clubUrl = clubUrl;
         this.clubViews = clubViews;
         this.clubImageUrl = clubImageUrl;
         this.likeCounts = likeCounts;

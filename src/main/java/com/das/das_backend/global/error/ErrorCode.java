@@ -31,6 +31,7 @@ public enum ErrorCode {
     SEND_CODE_FAILED(404, "Send Code Failed"),
     NOTICE_NOT_FOUND(404, "Notice Not Found"),
     CLUB_NOT_FOUND(404, "Club Not Found"),
+    CLUB_ALREADY_EXISTS(409, "Club Already Exists"),
 
     USER_ALREADY_EXISTS(409, "User Already Exists"),
     LIKE_EXIST(409, "Like Exist"),
