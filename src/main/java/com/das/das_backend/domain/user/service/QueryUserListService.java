@@ -1,6 +1,5 @@
 package com.das.das_backend.domain.user.service;
 
-import com.das.das_backend.domain.feed.presentation.dto.response.QueryFeedListResponse;
 import com.das.das_backend.domain.user.domain.repository.UserRepository;
 import com.das.das_backend.domain.user.presentation.dto.response.QueryUserListResponse;
 import com.das.das_backend.domain.user.presentation.dto.response.QueryUserListResponse.UserResponse;
@@ -29,6 +28,7 @@ public class QueryUserListService {
                         .viewCounts(user.getViewCounts())
                         .grade(user.getGrade())
                         .classNum(user.getClassNum())
+                        .introduce(user.getIntroduce())
                         .build())
                 .collect(Collectors.toList());
 
