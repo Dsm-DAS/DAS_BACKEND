@@ -30,6 +30,8 @@ public class QueryFeedDetailService {
                 .title(feed.getTitle())
                 .content(feed.getContent())
                 .dasUrl(feed.getDasUrl())
+                .major(feed.getMajor())
+                .endAt(feed.getEndAt())
                 .views(feed.getViews())
                 .isMine(userFacade.getCurrentUser().equals(writer))
                 .writer(userFacade.getWriter(writer))
