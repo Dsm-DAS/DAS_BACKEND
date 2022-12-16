@@ -87,7 +87,7 @@ public class User {
 
     @Builder
     public User(String email, String password, String name, Integer grade, Integer classNum, Integer number,
-                Integer viewCounts, Authority authority, Sex sex, String profileImageUrl, Major major, String stack, Club club, LinkInfo linkInfo, String region) {
+                Integer viewCounts, Authority authority, Sex sex, Major major, String stack, Club club, LinkInfo linkInfo, String region) {
         this.email = email;
         this.password = password;
         this.name = name;
@@ -97,7 +97,6 @@ public class User {
         this.viewCounts = viewCounts;
         this.authority = authority;
         this.sex = sex;
-        this.profileImageUrl = profileImageUrl;
         this.major = major;
         this.club = club;
         this.linkInfo = linkInfo;

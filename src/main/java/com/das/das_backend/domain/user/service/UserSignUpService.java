@@ -6,7 +6,6 @@ import com.das.das_backend.domain.user.facade.AuthCodeFacade;
 import com.das.das_backend.domain.user.facade.UserFacade;
 import com.das.das_backend.domain.user.presentation.dto.request.UserSignUpRequest;
 import com.das.das_backend.global.enums.Authority;
-import com.das.das_backend.infrastructure.s3.DefaultImage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -36,7 +35,6 @@ public class UserSignUpService {
                 .classNum(request.getClassNum())
                 .number(request.getNumber())
                 .authority(Authority.USER)
-                .profileImageUrl(DefaultImage.USER_PROFILE_IMAGE)
                 .viewCounts(0)
                 .build());
     }
