@@ -59,7 +59,7 @@ public class SecurityConfig {
 
                 //club
                 .antMatchers(HttpMethod.POST, "/club").hasAnyAuthority("TEACHER", "CLUB_MANAGER", "ADMIN")
-                .antMatchers(HttpMethod.PATCH, "/club/{club-id}").hasAnyAuthority("TEACHER", "CLUB_MANAGER", "ADMIN")
+                .antMatchers(HttpMethod.PUT, "/club/{club-id}").hasAnyAuthority("TEACHER", "CLUB_MANAGER", "ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/club/{club-id}").hasAnyAuthority("TEACHER", "CLUB_MANAGER", "ADMIN")
                 .antMatchers(HttpMethod.GET, "/club/lists").authenticated()
                 .antMatchers(HttpMethod.GET, "/club/{club-id}").authenticated()
