@@ -2,11 +2,9 @@ package com.das.das_backend.domain.club.presentation;
 
 import com.das.das_backend.domain.club.presentation.dto.request.CreateClubRequest;
 import com.das.das_backend.domain.club.presentation.dto.request.UpdateClubRequest;
+import com.das.das_backend.domain.club.presentation.dto.response.QueryClubDetailResponse;
 import com.das.das_backend.domain.club.presentation.dto.response.QueryClubListResponse;
-import com.das.das_backend.domain.club.service.CreateClubService;
-import com.das.das_backend.domain.club.service.DeleteClubService;
-import com.das.das_backend.domain.club.service.QueryClubListService;
-import com.das.das_backend.domain.club.service.UpdateClubService;
+import com.das.das_backend.domain.club.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +19,7 @@ public class ClubController {
     private final UpdateClubService updateClubService;
     private final DeleteClubService deleteClubService;
     private final QueryClubListService queryClubListService;
+    private final QueryClubDetailService queryClubDetailService;
 
     @PostMapping
     public void createClub(@RequestBody @Valid CreateClubRequest request) {
@@ -42,5 +41,10 @@ public class ClubController {
     public QueryClubListResponse queryClubList() {
         return queryClubListService.execute();
     }
-    
+
+    @GetMapping("/{club-id}")
+    public QueryClubDetailResponse queryClubDetails(@PathVariable("club-id") Integer clubId) {
+        return queryClubDetailService.execute(clubId);
+    }
+
 }
