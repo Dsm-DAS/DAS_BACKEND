@@ -76,4 +76,13 @@ public class Club {
         this.likeCounts -= 1;
     }
 
+    public void modifyClub(String clubName, String clubImageUrl, ClubType clubType, String clubUrl, ClubCategory clubCategory, String clubIntroduce) {
+        this.clubName = clubName;
+        this.clubImageUrl = clubImageUrl;
+        this.clubType = clubType;
+        this.clubUrl = clubUrl;
+        this.clubCategory = clubCategory;
+        this.clubIntroduce = clubIntroduce;
+    }
+
 }
