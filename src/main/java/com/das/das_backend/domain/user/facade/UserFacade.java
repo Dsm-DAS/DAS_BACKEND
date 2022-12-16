@@ -1,13 +1,18 @@
 package com.das.das_backend.domain.user.facade;
 
+import com.das.das_backend.domain.club.domain.Club;
 import com.das.das_backend.domain.user.domain.User;
 import com.das.das_backend.domain.user.domain.repository.UserRepository;
 import com.das.das_backend.domain.user.exception.UserAlreadyExistsException;
 import com.das.das_backend.domain.user.exception.UserNotFoundException;
+import com.das.das_backend.domain.user.presentation.dto.response.QueryUserElement;
 import com.das.das_backend.domain.user.presentation.dto.response.WriterResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Component
@@ -22,7 +27,7 @@ public class UserFacade {
     }
 
     public void isAlreadyExists(String email) {
-        if(userRepository.findByEmail(email).isPresent()) {
+        if (userRepository.findByEmail(email).isPresent()) {
             throw UserAlreadyExistsException.EXCEPTION;
         }
     }
@@ -43,6 +48,13 @@ public class UserFacade {
                 .name(writer.getName())
                 .profileImageUrl(writer.getProfileImageUrl())
                 .build();
+    }
+
+    public List<QueryUserElement> queryUsersList(Club club) {
+        return club.getUserList()
+                .stream()
+                .map(QueryUserElement::of)
+                .collect(Collectors.toList());
     }
 
 }
