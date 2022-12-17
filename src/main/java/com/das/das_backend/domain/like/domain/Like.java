@@ -12,8 +12,8 @@ import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "tbl_feed_like")
 @Entity
+@Table(name = "tbl_like")
 public class Like {
 
     @Id
